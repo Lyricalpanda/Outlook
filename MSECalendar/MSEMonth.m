@@ -7,7 +7,18 @@
 //
 
 #import "MSEMonth.h"
+#import "MSECalendarUtils.h"
 
 @implementation MSEMonth
+
+- (NSUInteger) numberOfDays {
+    MSECalendarUtils *utils = [MSECalendarUtils new];
+    return [utils numberOfDaysInMonth:self.month year:self.year];
+}
+
+- (NSUInteger)startingWeekDay {
+    MSECalendarUtils *utils = [MSECalendarUtils new];
+    return [utils firstDayInMonth:self.month year:self.year];
+}
 
 @end

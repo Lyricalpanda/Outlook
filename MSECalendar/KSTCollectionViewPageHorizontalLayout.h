@@ -5,6 +5,7 @@
 //  Created by Zeng on 22/12/2016.
 //  Copyright © 2016 Zeng. All rights reserved.
 //
+//  Taken from https://github.com/kelystor/KSTCollectionViewPageHorizontalLayout
 
 #import <UIKit/UIKit.h>
 

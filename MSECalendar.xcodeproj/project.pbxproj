@@ -15,6 +15,14 @@
 		F32C25611E42B6F5006F8C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32C255F1E42B6F5006F8C77 /* LaunchScreen.storyboard */; };
 		F32C256C1E42B6F6006F8C77 /* MSECalendarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C256B1E42B6F6006F8C77 /* MSECalendarTests.m */; };
 		F32C25771E42B6F6006F8C77 /* MSECalendarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25761E42B6F6006F8C77 /* MSECalendarUITests.m */; };
+		F32C25871E42B719006F8C77 /* MSECalendarUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25861E42B719006F8C77 /* MSECalendarUtils.m */; };
+		F32C258C1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C258A1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m */; };
+		F32C258D1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32C258B1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib */; };
+		F32C25911E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */; };
+		F32C25941E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25931E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m */; };
+		F32C25971E43088C006F8C77 /* RDHCollectionViewGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25961E43088C006F8C77 /* RDHCollectionViewGridLayout.m */; };
+		F32C259A1E430A3B006F8C77 /* FullyHorizontalFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25991E430A3B006F8C77 /* FullyHorizontalFlowLayout.m */; };
+		F32C259E1E430E23006F8C77 /* MSEMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C259D1E430E23006F8C77 /* MSEMonth.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +59,21 @@
 		F32C25721E42B6F6006F8C77 /* MSECalendarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSECalendarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F32C25761E42B6F6006F8C77 /* MSECalendarUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSECalendarUITests.m; sourceTree = "<group>"; };
 		F32C25781E42B6F6006F8C77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F32C25851E42B719006F8C77 /* MSECalendarUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarUtils.h; sourceTree = "<group>"; };
+		F32C25861E42B719006F8C77 /* MSECalendarUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarUtils.m; sourceTree = "<group>"; };
+		F32C25891E42BED2006F8C77 /* MSECalendarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarCollectionViewCell.h; sourceTree = "<group>"; };
+		F32C258A1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarCollectionViewCell.m; sourceTree = "<group>"; };
+		F32C258B1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSECalendarCollectionViewCell.xib; sourceTree = "<group>"; };
+		F32C258F1E42C5B3006F8C77 /* MSECollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		F32C25921E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTCollectionViewPageHorizontalLayout.h; sourceTree = "<group>"; };
+		F32C25931E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTCollectionViewPageHorizontalLayout.m; sourceTree = "<group>"; };
+		F32C25951E43088C006F8C77 /* RDHCollectionViewGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDHCollectionViewGridLayout.h; sourceTree = "<group>"; };
+		F32C25961E43088C006F8C77 /* RDHCollectionViewGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHCollectionViewGridLayout.m; sourceTree = "<group>"; };
+		F32C25981E430A3B006F8C77 /* FullyHorizontalFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullyHorizontalFlowLayout.h; sourceTree = "<group>"; };
+		F32C25991E430A3B006F8C77 /* FullyHorizontalFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullyHorizontalFlowLayout.m; sourceTree = "<group>"; };
+		F32C259C1E430E23006F8C77 /* MSEMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEMonth.h; sourceTree = "<group>"; };
+		F32C259D1E430E23006F8C77 /* MSEMonth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEMonth.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +124,15 @@
 		F32C25501E42B6F5006F8C77 /* MSECalendar */ = {
 			isa = PBXGroup;
 			children = (
+				F32C259B1E430E15006F8C77 /* Models */,
+				F32C25981E430A3B006F8C77 /* FullyHorizontalFlowLayout.h */,
+				F32C25991E430A3B006F8C77 /* FullyHorizontalFlowLayout.m */,
+				F32C25921E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.h */,
+				F32C25931E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m */,
+				F32C25951E43088C006F8C77 /* RDHCollectionViewGridLayout.h */,
+				F32C25961E43088C006F8C77 /* RDHCollectionViewGridLayout.m */,
+				F32C25881E42BEB0006F8C77 /* Cells */,
+				F32C25841E42B705006F8C77 /* Utils */,
 				F32C25541E42B6F5006F8C77 /* AppDelegate.h */,
 				F32C25551E42B6F5006F8C77 /* AppDelegate.m */,
 				F32C25571E42B6F5006F8C77 /* ViewController.h */,
@@ -138,6 +170,36 @@
 				F32C25781E42B6F6006F8C77 /* Info.plist */,
 			);
 			path = MSECalendarUITests;
+			sourceTree = "<group>";
+		};
+		F32C25841E42B705006F8C77 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F32C25851E42B719006F8C77 /* MSECalendarUtils.h */,
+				F32C25861E42B719006F8C77 /* MSECalendarUtils.m */,
+				F32C258F1E42C5B3006F8C77 /* MSECollectionViewFlowLayout.h */,
+				F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		F32C25881E42BEB0006F8C77 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F32C25891E42BED2006F8C77 /* MSECalendarCollectionViewCell.h */,
+				F32C258A1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m */,
+				F32C258B1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		F32C259B1E430E15006F8C77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F32C259C1E430E23006F8C77 /* MSEMonth.h */,
+				F32C259D1E430E23006F8C77 /* MSEMonth.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F32C258D1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib in Resources */,
 				F32C25611E42B6F5006F8C77 /* LaunchScreen.storyboard in Resources */,
 				F32C255E1E42B6F5006F8C77 /* Assets.xcassets in Resources */,
 				F32C255C1E42B6F5006F8C77 /* Main.storyboard in Resources */,
@@ -274,7 +337,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F32C25591E42B6F5006F8C77 /* ViewController.m in Sources */,
+				F32C25971E43088C006F8C77 /* RDHCollectionViewGridLayout.m in Sources */,
+				F32C25871E42B719006F8C77 /* MSECalendarUtils.m in Sources */,
 				F32C25561E42B6F5006F8C77 /* AppDelegate.m in Sources */,
+				F32C258C1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m in Sources */,
+				F32C259A1E430A3B006F8C77 /* FullyHorizontalFlowLayout.m in Sources */,
+				F32C259E1E430E23006F8C77 /* MSEMonth.m in Sources */,
+				F32C25941E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m in Sources */,
+				F32C25911E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m in Sources */,
 				F32C25531E42B6F5006F8C77 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

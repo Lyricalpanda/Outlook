@@ -10,4 +10,6 @@
 
 @interface MSECalendarCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel *dateNumberLabel;
+
 @end

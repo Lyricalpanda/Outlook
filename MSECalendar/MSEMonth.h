@@ -10,4 +10,10 @@
 
 @interface MSEMonth : NSObject
 
+@property (nonatomic) NSUInteger month;
+@property (nonatomic) NSUInteger year;
+
+- (NSUInteger) numberOfDays;
+- (NSUInteger) startingWeekDay;
+
 @end

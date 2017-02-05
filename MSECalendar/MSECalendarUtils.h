@@ -10,4 +10,9 @@
 
 @interface MSECalendarUtils : NSObject
 
+- (NSDate *)dateWithMonth:(NSInteger)month year:(NSInteger)year;
+- (NSDate *)dateWithMonth:(NSInteger)month day:(NSInteger)day year:(NSInteger)year;
+- (NSInteger)numberOfDaysInMonth:(NSInteger)month year:(NSInteger)year;
+- (NSInteger)firstDayInMonth:(NSInteger)month year:(NSInteger)year;
+- (NSString *)monthName:(NSInteger)month;
 @end
