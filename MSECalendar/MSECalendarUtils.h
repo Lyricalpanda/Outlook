@@ -15,4 +15,14 @@
 - (NSInteger)numberOfDaysInMonth:(NSInteger)month year:(NSInteger)year;
 - (NSInteger)firstDayInMonth:(NSInteger)month year:(NSInteger)year;
 - (NSString *)monthName:(NSInteger)month;
+- (NSInteger)weekdayOfWeek;
+- (NSDate *)previousWeekFromDate:(NSDate *)date;
+- (NSDate *)nextWeekFromDate:(NSDate *)date;
+- (NSDate *)firstDayOfWeekFromDate:(NSDate *)date;
+- (NSDate *)addDays:(NSInteger)numDays toDate:(NSDate *)date;
+- (NSInteger)dayFromDate:(NSDate *)date;
+- (NSInteger)monthFromDate:(NSDate *)date;
+- (NSInteger)yearFromDate:(NSDate *)date;
+- (NSString *)monthAbbreviationFromMonth:(NSInteger)month;
+
 @end

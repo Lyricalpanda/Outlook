@@ -14,7 +14,7 @@
 
 #import "MSEMonth.h"
 
-#import "FullyHorizontalFlowLayout.h"
+NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -27,7 +27,10 @@
 @property (nonatomic) NSInteger currentYear;
 @property (nonatomic) CGFloat lastOffset;
 @property (nonatomic, strong) NSMutableArray *months;
+@property (nonatomic, strong) NSIndexPath *selectedDate;
+@property (nonatomic, strong) NSIndexPath *previousSelectedDate;
 
+@property (nonatomic, strong) NSMutableArray *weeks;
 
 @property (nonatomic, strong) MSECalendarUtils *utils;
 
@@ -39,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.utils = [MSECalendarUtils new];
+    self.weeks = [@[] mutableCopy];
     self.currentMonth = 2;
     self.currentYear = 2017;
     self.lastOffset = 0;
@@ -47,14 +51,31 @@
     self.begin = [self.utils firstDayInMonth:self.currentMonth year:self.currentYear] - 1;
     [self initCollectionView];
     
-    [self initMonthsArray];
+    
+    [self initializeWeeksArray];
+//    [self initMonthsArray];
     [self.collectionView reloadData];
 }
 
 - (void) viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     [self.collectionView layoutIfNeeded];
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:1] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+}
+
+- (void)initializeWeeksArray {
+    NSDate *currentWeek = [self.utils firstDayOfWeekFromDate:[NSDate date]];
+    NSDate *previousWeek = [currentWeek copy];
+    NSDate *nextWeek = [currentWeek copy];
+    [self.weeks addObject:currentWeek];
+    for (int i = 0; i < 5; i++) {
+        previousWeek = [self.utils previousWeekFromDate:previousWeek];
+        [self.weeks insertObject:previousWeek atIndex:0];
+    }
+    for (int i = 0; i < 5; i++) {
+        nextWeek = [self.utils nextWeekFromDate:nextWeek];
+        [self.weeks addObject:nextWeek];
+    }    
 }
 
 - (void)initMonthsArray {
@@ -69,14 +90,11 @@
 
 - (void)initCollectionView {
     
-    FullyHorizontalFlowLayout *flowLayout = [FullyHorizontalFlowLayout new];
+    UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.minimumLineSpacing = 0;
-    flowLayout.itemSize =CGSizeMake(self.collectionView.frame.size.width/7, self.collectionView.frame.size.height/6);
-    flowLayout.nbColumns = 7;
-    flowLayout.nbLines = 6;
+    flowLayout.itemSize =CGSizeMake(self.collectionView.frame.size.width/7, self.collectionView.frame.size.height/5);
     
-    [self.collectionView setPagingEnabled:YES];
     [self.collectionView setCollectionViewLayout:flowLayout];
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MSECalendarCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([MSECalendarCollectionViewCell class])];
     [self.collectionView setDataSource:self];
@@ -84,28 +102,78 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.months count];
+    return 5*2+1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 42;
+    return 7;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    MSECalendarCollectionViewCell *mseCell = (MSECalendarCollectionViewCell *) cell;
+    NSDate *currentWeek = [self.weeks objectAtIndex:indexPath.section];
+    NSDate *weekDay = [self.utils addDays:indexPath.row toDate:currentWeek];
+    NSInteger month = [self.utils monthFromDate:weekDay];
+    if (month % 2 == 0) {
+        [mseCell setBackgroundColor:[UIColor grayColor]];
+    }
+    else {
+        [mseCell setBackgroundColor:[UIColor whiteColor]];
+    }
+    NSInteger day = [self.utils dayFromDate:weekDay];
+    if (day == 1) {
+        [mseCell.monthLabel setText:[self.utils monthAbbreviationFromMonth:month]];
+    }
+    else {
+        [mseCell.monthLabel setText:@""];
+    }
+    
+    [mseCell.dateNumberLabel setText:[NSString stringWithFormat:@"%ld", day]];
+    
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    MSECalendarCollectionViewCell *cell = (MSECalendarCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MSECalendarCollectionViewCell class]) forIndexPath:indexPath];
+    if (self.previousSelectedDate == self.selectedDate) {
+        return;
+    }
+    self.previousSelectedDate = self.selectedDate;
+    self.selectedDate = indexPath;
+    if (self.previousSelectedDate){
+    [collectionView reloadItemsAtIndexPaths:@[indexPath, self.previousSelectedDate]];
+    }
+    else {
+        [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    MSECalendarCollectionViewCell *cell = (MSECalendarCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MSECalendarCollectionViewCell class]) forIndexPath:indexPath];
-    MSEMonth *month = self.months[indexPath.section];
-    if (month.startingWeekDay - 1 > indexPath.row) {
-//        [cell.dateNumberLabel setText:[NSString stringWithFormat:@"-%ld", indexPath.row+1]];
-        [cell.dateNumberLabel setText:@""];
-    }
-    else if ((month.numberOfDays + month.startingWeekDay - 1) > indexPath.row) {
-        [cell.dateNumberLabel setText:[NSString stringWithFormat:@"%ld",indexPath.row+1 - (month.startingWeekDay-1)]];
-    } else {
-//        [cell.dateNumberLabel setText:[NSString stringWithFormat:@"+%ld", indexPath.row+1]];
-        [cell.dateNumberLabel setText:@""];
-    }
+    NSLog(@"Cell for section and row: %ld %ld", indexPath.section, indexPath.row);
     
-    [cell setBackgroundColor:[UIColor redColor]];
+    MSECalendarCollectionViewCell *cell = (MSECalendarCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MSECalendarCollectionViewCell class]) forIndexPath:indexPath];
+    if (indexPath.row == self.selectedDate.row && indexPath.section == self.selectedDate.section) {
+        [cell dateSelected:YES];
+    }
+    else if (indexPath.row == self.previousSelectedDate.row && indexPath.section == self.previousSelectedDate.section) {
+        [cell dateSelected:NO];
+    }
+//    NSDate *currentWeek = [self.weeks objectAtIndex:indexPath.section];
+//    NSDate *weekDay = [self.utils addDays:indexPath.row toDate:currentWeek];
+//    [cell.dateNumberLabel setText:[NSString stringWithFormat:@"%ld", [self.utils dayFromDate:weekDay]]];
+//    MSEMonth *month = self.months[indexPath.section];
+//    if (month.startingWeekDay - 1 > indexPath.row) {
+////        [cell.dateNumberLabel setText:[NSString stringWithFormat:@"-%ld", indexPath.row+1]];
+//        [cell.dateNumberLabel setText:@""];
+//    }
+//    else if ((month.numberOfDays + month.startingWeekDay - 1) > indexPath.row) {
+//        [cell.dateNumberLabel setText:[NSString stringWithFormat:@"%ld",indexPath.row+1 - (month.startingWeekDay-1)]];
+//    } else {
+////        [cell.dateNumberLabel setText:[NSString stringWithFormat:@"+%ld", indexPath.row+1]];
+//        [cell.dateNumberLabel setText:@""];
+//    }
+//    
+//    [cell setBackgroundColor:[UIColor redColor]];
+//    [cell dateSelected:YES];
     return cell;
 }
 
@@ -140,39 +208,39 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     
-    if (scrollView.contentOffset.x == self.collectionView.frame.size.width) {
-        return;
-    }
-    
-    MSEMonth *currentMonth;
-    MSEMonth *newMonth;
-    
-    for (MSEMonth *month in self.months) {
-        NSLog(@"Before Month: %ld %ld", month.month, month.year);
-    }
-
-    if (self.lastOffset > scrollView.contentOffset.x) {
-        currentMonth = self.months[0];
-        newMonth = [self getPreviousMonth:currentMonth];
-        [self.months removeLastObject];
-        [self.months insertObject:newMonth atIndex:0];
-    }
-    else {
-        currentMonth = self.months[2];
-        newMonth = [self getNextMonth:currentMonth];
-        [self.months removeObjectAtIndex:0];
-        [self.months addObject:newMonth];
-    }
-    
-    for (MSEMonth *month in self.months) {
-        NSLog(@"Month: %ld %ld", month.month, month.year);
-    }
-    
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:1] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-    [self.collectionView reloadData];
-    
-    self.lastOffset = scrollView.contentOffset.x;
-    [self.titleLabel setText:[NSString stringWithFormat:@"%@ %ld", [self.utils monthName:currentMonth.month], currentMonth.year]];
+//    if (scrollView.contentOffset.x == self.collectionView.frame.size.width) {
+//        return;
+//    }
+//    
+//    MSEMonth *currentMonth;
+//    MSEMonth *newMonth;
+//    
+//    for (MSEMonth *month in self.months) {
+//        NSLog(@"Before Month: %ld %ld", month.month, month.year);
+//    }
+//
+//    if (self.lastOffset > scrollView.contentOffset.x) {
+//        currentMonth = self.months[0];
+//        newMonth = [self getPreviousMonth:currentMonth];
+//        [self.months removeLastObject];
+//        [self.months insertObject:newMonth atIndex:0];
+//    }
+//    else {
+//        currentMonth = self.months[2];
+//        newMonth = [self getNextMonth:currentMonth];
+//        [self.months removeObjectAtIndex:0];
+//        [self.months addObject:newMonth];
+//    }
+//    
+//    for (MSEMonth *month in self.months) {
+//        NSLog(@"Month: %ld %ld", month.month, month.year);
+//    }
+//
+//    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:1] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+//    [self.collectionView reloadData];
+//    
+//    self.lastOffset = scrollView.contentOffset.x;
+//    [self.titleLabel setText:[NSString stringWithFormat:@"%@ %ld", [self.utils monthName:currentMonth.month], currentMonth.year]];
 }
 
 
