@@ -51,18 +51,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2Q-OX-EgD" customClass="MSEAgendaViewModel">
+                                <rect key="frame" x="0.0" y="372" width="375" height="295"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xBS-lt-9Ia" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4mc-zQ-S8D"/>
+                            <constraint firstItem="p2Q-OX-EgD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4rP-1p-dTq"/>
                             <constraint firstItem="zmU-qe-FPP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Kic-bk-WLR"/>
                             <constraint firstItem="xBS-lt-9Ia" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="Lgs-zG-3EH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="p2Q-OX-EgD" secondAttribute="bottom" id="Y8d-25-abP"/>
                             <constraint firstItem="zmU-qe-FPP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="104" id="g9r-3K-3bW"/>
+                            <constraint firstItem="p2Q-OX-EgD" firstAttribute="top" secondItem="zmU-qe-FPP" secondAttribute="bottom" constant="8" id="hGu-w2-ftN"/>
+                            <constraint firstAttribute="trailing" secondItem="p2Q-OX-EgD" secondAttribute="trailing" id="jrI-mU-kCq"/>
                             <constraint firstItem="xBS-lt-9Ia" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="p9H-Zy-KEB"/>
                             <constraint firstAttribute="trailing" secondItem="zmU-qe-FPP" secondAttribute="trailing" id="uEi-Zh-puW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="agendaViewModel" destination="p2Q-OX-EgD" id="eC0-e8-hF9"/>
                         <outlet property="collectionView" destination="zmU-qe-FPP" id="r7N-t1-IR2"/>
                         <outlet property="titleLabel" destination="xBS-lt-9Ia" id="iWE-LZ-mIh"/>
                     </connections>

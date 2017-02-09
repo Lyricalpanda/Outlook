@@ -24,5 +24,6 @@
 - (NSInteger)monthFromDate:(NSDate *)date;
 - (NSInteger)yearFromDate:(NSDate *)date;
 - (NSString *)monthAbbreviationFromMonth:(NSInteger)month;
-
+- (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
+- (NSString *)stringForDate:(NSDate *)date;
 @end

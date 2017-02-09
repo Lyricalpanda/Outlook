@@ -55,9 +55,8 @@
     return date;
 }
 
-- (NSInteger)weekdayOfWeek {
-    NSDate *today = [NSDate date];
-    return [self.calendar component:NSCalendarUnitWeekday fromDate:today];
+- (NSInteger)weekdayOfWeekFromDate:(NSDate *)date {
+    return [self.calendar component:NSCalendarUnitWeekday fromDate:date];
 }
 
 - (NSDate *)previousWeekFromDate:(NSDate *)date{
@@ -85,6 +84,11 @@
     return [[dateFormatter standaloneMonthSymbols] objectAtIndex:(month-1)];
 }
 
+- (NSString *)weekdayName:(NSInteger)day {
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    return [[dateFormatter weekdaySymbols] objectAtIndex:(day-1)];
+}
+
 - (NSInteger)dayFromDate:(NSDate *)date {
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
     return [components day];
@@ -101,10 +105,30 @@
 
 }
 
+//getEra
+
+- (NSString *)stringForDate:(NSDate *)date {
+    return [NSString stringWithFormat:@"%@ %@ %ld",[self weekdayName:[self weekdayOfWeekFromDate:date]], [self monthName:[self monthFromDate:date]], [self dayFromDate:date]];
+}
+
 - (NSString *)monthAbbreviationFromMonth:(NSInteger)month {
-    NSDateFormatter *df = [NSDateFormatter new];
-    NSString *monthName = [[df monthSymbols] objectAtIndex:(month-1)];
-    return [monthName substringToIndex:3];
+    return [[self monthName:month] substringToIndex:3];
+}
+
+- (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime
+{
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    [self.calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate
+                 interval:NULL forDate:fromDateTime];
+    [self.calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate
+                 interval:NULL forDate:toDateTime];
+    
+    NSDateComponents *difference = [self.calendar components:NSCalendarUnitDay
+                                               fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference day];
 }
 
 @end
