@@ -11,5 +11,6 @@
 @optional
 
 - (void) dateScrolled:(NSString *)date;
-
+- (void) decrementedDate;
+- (void) incrementedDate;
 @end

@@ -18,19 +18,49 @@
 @property (nonatomic, strong) MSECalendarUtils *utils;
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
+@property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
 
 @implementation MSECalendarViewModel
 
-- (instancetype) init {
-    self = [super init];
-    if (self ) {
+//- (instancetype) init {
+//    self = [super init];
+//    if (self ) {
+//        self.weeks = [@[] mutableCopy];
+//        self.utils = [MSECalendarUtils new];
+//        [self initializeWeeksArray];
+//    }
+//    return self;
+//}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
         self.weeks = [@[] mutableCopy];
         self.utils = [MSECalendarUtils new];
+        
+        UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
+        flowLayout.minimumInteritemSpacing = 0;
+        flowLayout.minimumLineSpacing = 0;
+        flowLayout.itemSize =CGSizeMake(self.frame.size.width/7, self.frame.size.height/5);
+        
+        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) collectionViewLayout:flowLayout];
+        [self addSubview:self.collectionView];
+
+        [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MSECalendarSelectedCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([MSECalendarSelectedCollectionViewCell class])];
+        [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MSECalendarCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([MSECalendarCollectionViewCell class])];
+        [self.collectionView setDataSource:self];
+        [self.collectionView setDelegate:self];
+        
         [self initializeWeeksArray];
     }
     return self;
+}
+
+- (void) initWithStartingDate:(NSDate *)date {
+    [self.collectionView reloadData];
+    
 }
 
 - (void)initializeWeeksArray {
@@ -92,10 +122,6 @@
     NSIndexPath *previousPath = self.selectedIndexPath;
     self.selectedDate = [self.utils addDays:1 toDate:self.selectedDate];
 
-    if (previousPath) {
-        
-    }
-    
     if (self.selectedIndexPath.row == 6) {
         self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:self.selectedIndexPath.section + 1];
     }
@@ -103,7 +129,36 @@
         self.selectedIndexPath = [NSIndexPath indexPathForRow:self.selectedIndexPath.row+1 inSection:self.selectedIndexPath.section];
     }
     
+    if (previousPath) {
+        [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath, previousPath]];
+    }
+    else {
+        [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath]];
+    }
+}
+
+- (void) decrementDate {
+    if (self.selectedIndexPath.row == 0 && self.selectedIndexPath.section == 0) {
+        return;
+    }
     
+    NSIndexPath *previousPath = self.selectedIndexPath;
+    self.selectedDate = [self.utils addDays:-1 toDate:self.selectedDate];
+    
+    if (self.selectedIndexPath.row == 0) {
+        self.selectedIndexPath = [NSIndexPath indexPathForRow:6 inSection:self.selectedIndexPath.section - 1];
+    }
+    else {
+        self.selectedIndexPath = [NSIndexPath indexPathForRow:self.selectedIndexPath.row-1 inSection:self.selectedIndexPath.section];
+    }
+    
+    if (previousPath) {
+        [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath, previousPath]];
+    }
+    else {
+        [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath]];
+    }
+
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

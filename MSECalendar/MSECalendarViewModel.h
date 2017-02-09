@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface MSECalendarViewModel : NSObject <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface MSECalendarViewModel : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
 
 - (void) initWithStartingDate:(NSDate *)date;
 - (void) incrementDate;

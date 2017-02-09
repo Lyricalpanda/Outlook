@@ -92,10 +92,17 @@
     NSArray* sortedIndexPaths = [indexPaths sortedArrayUsingSelector:@selector(compare:)];
     NSInteger section = [(NSIndexPath*)[sortedIndexPaths objectAtIndex:0] section];
     if (section != self.firstVisibleIndex) {
-        self.firstVisibleIndex = section;
-        if ([self.delegate respondsToSelector:@selector(dateScrolled:)]) {
-            [self.delegate dateScrolled:@"Date"];
+        if (section < self.firstVisibleIndex) {
+            if ([self.delegate respondsToSelector:@selector(decrementedDate)]) {
+                [self.delegate decrementedDate];
+            }
         }
+        else {
+            if ([self.delegate respondsToSelector:@selector(incrementedDate)]) {
+                [self.delegate incrementedDate];
+            }
+        }
+        self.firstVisibleIndex = section;
     }
 }
 

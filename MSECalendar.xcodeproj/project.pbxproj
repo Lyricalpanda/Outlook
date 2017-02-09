@@ -32,8 +32,6 @@
 		F32C258C1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C258A1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m */; };
 		F32C258D1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32C258B1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib */; };
 		F32C25911E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */; };
-		F32C25941E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25931E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m */; };
-		F32C25971E43088C006F8C77 /* RDHCollectionViewGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25961E43088C006F8C77 /* RDHCollectionViewGridLayout.m */; };
 		F32C259E1E430E23006F8C77 /* MSEMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C259D1E430E23006F8C77 /* MSEMonth.m */; };
 /* End PBXBuildFile section */
 
@@ -100,10 +98,6 @@
 		F32C258B1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSECalendarCollectionViewCell.xib; sourceTree = "<group>"; };
 		F32C258F1E42C5B3006F8C77 /* MSECollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		F32C25921E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTCollectionViewPageHorizontalLayout.h; sourceTree = "<group>"; };
-		F32C25931E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTCollectionViewPageHorizontalLayout.m; sourceTree = "<group>"; };
-		F32C25951E43088C006F8C77 /* RDHCollectionViewGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDHCollectionViewGridLayout.h; sourceTree = "<group>"; };
-		F32C25961E43088C006F8C77 /* RDHCollectionViewGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHCollectionViewGridLayout.m; sourceTree = "<group>"; };
 		F32C259C1E430E23006F8C77 /* MSEMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEMonth.h; sourceTree = "<group>"; };
 		F32C259D1E430E23006F8C77 /* MSEMonth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEMonth.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,10 +191,6 @@
 				F31D4D1B1E4B015C00065C34 /* Protocol */,
 				F31D4CBA1E499EE500065C34 /* ViewModels */,
 				F32C259B1E430E15006F8C77 /* Models */,
-				F32C25921E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.h */,
-				F32C25931E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m */,
-				F32C25951E43088C006F8C77 /* RDHCollectionViewGridLayout.h */,
-				F32C25961E43088C006F8C77 /* RDHCollectionViewGridLayout.m */,
 				F32C25881E42BEB0006F8C77 /* Cells */,
 				F32C25841E42B705006F8C77 /* Utils */,
 				F32C25541E42B6F5006F8C77 /* AppDelegate.h */,
@@ -423,7 +413,6 @@
 				F31D4D191E4AEA8300065C34 /* MSEAgendaEventTableViewCell.m in Sources */,
 				F31D4D141E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.m in Sources */,
 				F32C25591E42B6F5006F8C77 /* ViewController.m in Sources */,
-				F32C25971E43088C006F8C77 /* RDHCollectionViewGridLayout.m in Sources */,
 				F32C25871E42B719006F8C77 /* MSECalendarUtils.m in Sources */,
 				F318C5951E47E57600300755 /* MSEWeek.m in Sources */,
 				F318C5981E47E58000300755 /* MSEDate.m in Sources */,
@@ -431,7 +420,6 @@
 				F31D4CC41E49BE7900065C34 /* MSEAgendaViewModel.m in Sources */,
 				F32C258C1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m in Sources */,
 				F32C259E1E430E23006F8C77 /* MSEMonth.m in Sources */,
-				F32C25941E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m in Sources */,
 				F32C25911E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m in Sources */,
 				F32C25531E42B6F5006F8C77 /* main.m in Sources */,
 			);
