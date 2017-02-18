@@ -18,6 +18,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+//    self.backgroundColor
     [self.colorView setBackgroundColor:[UIColor blueColor]];
     self.colorView.layer.cornerRadius = self.frame.size.height;
     // Initialization code

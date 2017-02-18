@@ -6,13 +6,13 @@
 //  Copyright © 2017 Eric Harmon. All rights reserved.
 //
 
-#import "MSEAgendaViewModel.h"
+#import "MSEAgendaView.h"
 #import "MSEAgendaHeaderFooterView.h"
 #import "MSEAgendaEventTableViewCell.h"
 #import "MSEAgendaEmptyTableViewCell.h"
 #import "MSECalendarUtils.h"
 
-@interface MSEAgendaViewModel()
+@interface MSEAgendaView()
 
 @property (nonatomic, strong) NSMutableArray *events;
 @property (nonatomic, strong) NSDate *firstDate;
@@ -20,12 +20,11 @@
 @property (nonatomic, strong) NSDate *today;
 
 @property (nonatomic, strong) MSECalendarUtils *utils;
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic) NSUInteger firstVisibleIndex;
 
 @end
 
-@implementation MSEAgendaViewModel
+@implementation MSEAgendaView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -47,6 +46,11 @@
         self.utils = [MSECalendarUtils new];
     }
     return self;
+}
+
+- (void) scrollAgendaToDate:(NSDate *)date {
+    NSUInteger todaySection = [self.utils daysBetweenDate:self.firstDate andDate:date];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:todaySection] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
 - (void) loadAgendaFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate{
@@ -92,15 +96,8 @@
     NSArray* sortedIndexPaths = [indexPaths sortedArrayUsingSelector:@selector(compare:)];
     NSInteger section = [(NSIndexPath*)[sortedIndexPaths objectAtIndex:0] section];
     if (section != self.firstVisibleIndex) {
-        if (section < self.firstVisibleIndex) {
-            if ([self.delegate respondsToSelector:@selector(decrementedDate)]) {
-                [self.delegate decrementedDate];
-            }
-        }
-        else {
-            if ([self.delegate respondsToSelector:@selector(incrementedDate)]) {
-                [self.delegate incrementedDate];
-            }
+        if ([self.delegate respondsToSelector:@selector(dateScrolled:)]) {
+            [self.delegate dateScrolled:[self.utils addDays:section toDate:self.firstDate]];
         }
         self.firstVisibleIndex = section;
     }

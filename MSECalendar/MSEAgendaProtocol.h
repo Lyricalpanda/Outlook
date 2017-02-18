@@ -10,7 +10,7 @@
 
 @optional
 
-- (void) dateScrolled:(NSString *)date;
+- (void) dateScrolled:(NSDate *)date;
 - (void) decrementedDate;
 - (void) incrementedDate;
 @end

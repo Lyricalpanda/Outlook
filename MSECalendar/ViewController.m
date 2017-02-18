@@ -10,15 +10,16 @@
 #import "MSECalendarUtils.h"
 #import "MSECalendarCollectionViewCell.h"
 #import "MSECalendarSelectedCollectionViewCell.h"
-#import "MSECalendarViewModel.h"
-#import "MSEAgendaViewModel.h"
+#import "MSECalendarView.h"
+#import "MSEAgendaView.h"
 #import "MSEMonth.h"
 #import "MSEAgendaProtocol.h"
 #import "MSECalendarUtils.h"
+#import "MSECalendarWeekdayView.h"
 
 NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
-@interface ViewController () <MSEAgendaProtocol>
+@interface ViewController () <MSEAgendaProtocol, MSECalendarProtocol>
 
 @property (nonatomic, strong) MSECalendarUtils *utils;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -26,30 +27,32 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
 @property (nonatomic, strong) NSMutableArray *weeks;
 
-@property (nonatomic, weak) IBOutlet MSECalendarViewModel *calendarViewModel;
-@property (nonatomic, weak) IBOutlet MSEAgendaViewModel *agendaViewModel;
+@property (nonatomic, weak) IBOutlet MSECalendarView *calendarViewModel;
+@property (nonatomic, weak) IBOutlet MSEAgendaView *agendaViewModel;
+@property (nonatomic, weak) IBOutlet MSECalendarWeekdayView *weekdayView;
 
 @end
 
 @implementation ViewController
 
 - (void)dateScrolled:(NSString *)date {
-    NSLog(@"Date : %@", date);
+    [self.calendarViewModel selectedDate:date];
+}
+
+- (void) calendarSelectedDate:(NSDate *)date {
+    [self.agendaViewModel scrollAgendaToDate:date];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.weeks = [@[] mutableCopy];
-    
-//    self.calendarViewModel = [MSECalendarViewModel new];
     [self.agendaViewModel setDelegate:self];
+    [self.calendarViewModel setDelegate:self];
     self.utils = [MSECalendarUtils new];
-//    self.agendaViewModel = [MSEAgendaViewModel new];
+    
+    [self.navigationController.navigationBar setTranslucent:NO];
     
     [self initializeWeeksArray];
-//    [self initTableView];
-//    [self.agendaViewModel setBackgroundColor:[UIColor redColor]];
-//    [self.collectionView reloadData];
 }
 
 - (void)initializeWeeksArray {
@@ -65,14 +68,6 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
         nextWeek = [self.utils nextWeekFromDate:nextWeek];
         [self.weeks addObject:nextWeek];
     }
-}
-
-- (void) incrementedDate {
-    [self.calendarViewModel incrementDate];
-}
-
-- (void) decrementedDate {
-    [self.calendarViewModel decrementDate];
 }
 
 - (void) viewWillAppear:(BOOL)animated {

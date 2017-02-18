@@ -52,7 +52,7 @@
     else {
         firstDay = [date copy];
     }
-    return date;
+    return firstDay;
 }
 
 - (NSInteger)weekdayOfWeekFromDate:(NSDate *)date {
@@ -113,6 +113,21 @@
 
 - (NSString *)monthAbbreviationFromMonth:(NSInteger)month {
     return [[self monthName:month] substringToIndex:3];
+}
+
+- (NSInteger)weeksBetweenDate:(NSDate *)fromDateTime toDate:(NSDate *)toDateTime {
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    [self.calendar rangeOfUnit:NSCalendarUnitWeekOfYear startDate:&fromDate
+                      interval:NULL forDate:fromDateTime];
+    [self.calendar rangeOfUnit:NSCalendarUnitWeekOfYear startDate:&toDate
+                      interval:NULL forDate:toDateTime];
+    
+    NSDateComponents *difference = [self.calendar components:NSCalendarUnitWeekOfYear
+                                                    fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference weekOfYear];
 }
 
 - (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime

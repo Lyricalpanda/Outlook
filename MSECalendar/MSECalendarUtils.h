@@ -26,4 +26,6 @@
 - (NSString *)monthAbbreviationFromMonth:(NSInteger)month;
 - (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 - (NSString *)stringForDate:(NSDate *)date;
+- (NSInteger)weeksBetweenDate:(NSDate *)fromDateTime toDate:(NSDate *)toDateTime;
+
 @end
