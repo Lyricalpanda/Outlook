@@ -86,7 +86,7 @@
     MSEAgendaHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([MSEAgendaHeaderFooterView class])];
     NSDate *date = [self.utils addDays:section toDate:self.firstDate];
     [view.dateLabel setText:[self.utils stringForDate:date]];
-    [view.contentView setBackgroundColor:[UIColor whiteColor]];
+//    [view.contentView setBackgroundColor:[UIColor whiteColor]];
     return view;
 }
 
@@ -102,6 +102,9 @@
     NSArray* indexPaths = [self.tableView indexPathsForVisibleRows];
     NSArray* sortedIndexPaths = [indexPaths sortedArrayUsingSelector:@selector(compare:)];
     NSInteger section = [(NSIndexPath*)[sortedIndexPaths objectAtIndex:0] section];
+    if ([self.delegate respondsToSelector:@selector(agendaScrolled)]) {
+        [self.delegate agendaScrolled];
+    }
     if (section != self.firstVisibleIndex) {
         if ([self.delegate respondsToSelector:@selector(dateScrolled:)]) {
             [self.delegate dateScrolled:[self.utils addDays:section toDate:self.firstDate]];

@@ -12,8 +12,15 @@
 
 -(void) awakeFromNib {
     [super awakeFromNib];
-    [self.dateLabel setFont:[UIFont systemFontOfSize:14.0]];
-    [self setBackgroundColor:[UIColor blueColor]];
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self.dateLabel setFont:[UIFont systemFontOfSize:14.0]];
+        [self.contentView setBackgroundColor:[UIColor whiteColor]];
+    }
+    return self;
 }
 
 @end

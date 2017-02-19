@@ -21,12 +21,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2Q-OX-EgD" customClass="MSEAgendaView">
-                                <rect key="frame" x="0.0" y="372" width="375" height="295"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7p-MH-4Wm" customClass="MSECalendarView">
                                 <rect key="frame" x="0.0" y="104" width="375" height="268"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="268" id="4nD-iu-FtD"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2Q-OX-EgD" customClass="MSEAgendaView">
+                                <rect key="frame" x="0.0" y="372" width="375" height="295"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMS-FQ-2rH" customClass="MSECalendarWeekdayView">
@@ -41,7 +44,6 @@
                         <constraints>
                             <constraint firstItem="p2Q-OX-EgD" firstAttribute="top" secondItem="z7p-MH-4Wm" secondAttribute="bottom" id="3Ei-E2-lLf"/>
                             <constraint firstItem="p2Q-OX-EgD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4rP-1p-dTq"/>
-                            <constraint firstItem="p2Q-OX-EgD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="372" id="650-EO-8Hs"/>
                             <constraint firstAttribute="trailing" secondItem="z7p-MH-4Wm" secondAttribute="trailing" id="7L9-Fi-S7Y"/>
                             <constraint firstAttribute="trailing" secondItem="TMS-FQ-2rH" secondAttribute="trailing" id="Lkc-qW-AWw"/>
                             <constraint firstItem="z7p-MH-4Wm" firstAttribute="top" secondItem="TMS-FQ-2rH" secondAttribute="bottom" id="Uk4-rf-bmq"/>
@@ -54,7 +56,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Utv-eR-LNZ"/>
                     <connections>
+                        <outlet property="agendaTopConstraint" destination="3Ei-E2-lLf" id="xBD-HY-ZYj"/>
                         <outlet property="agendaViewModel" destination="p2Q-OX-EgD" id="eC0-e8-hF9"/>
+                        <outlet property="calendarHeightConstraint" destination="4nD-iu-FtD" id="CWT-G2-HSN"/>
                         <outlet property="calendarViewModel" destination="z7p-MH-4Wm" id="LZs-9e-QE2"/>
                         <outlet property="weekdayView" destination="TMS-FQ-2rH" id="uQm-rF-nbp"/>
                     </connections>

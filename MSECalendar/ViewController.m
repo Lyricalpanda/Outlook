@@ -22,6 +22,9 @@
 NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
 @interface ViewController () <MSEAgendaProtocol, MSECalendarProtocol>
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *agendaHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *agendaTopConstraint;
 
 @property (nonatomic, strong) MSECalendarUtils *utils;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -33,6 +36,10 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 @property (nonatomic, weak) IBOutlet MSEAgendaView *agendaViewModel;
 @property (nonatomic, weak) IBOutlet MSECalendarWeekdayView *weekdayView;
 
+@property (nonatomic, assign) BOOL isAnimating;
+@property (nonatomic, assign) BOOL isScrolling;
+
+
 @end
 
 @implementation ViewController
@@ -41,12 +48,48 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     [self.calendarViewModel selectedDate:date];
 }
 
+- (void) agendaScrolled {
+    if (!self.isAnimating) {
+        [self.view layoutIfNeeded];
+        NSInteger cellWidth = self.calendarViewModel.frame.size.width / 7;
+        self.agendaTopConstraint.constant = -1 * cellWidth * 3;
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            self.isAnimating = NO;
+        }];
+    }
+}
+
+- (void)calendarScrolled {
+    if (!self.isAnimating) {
+        [self.view layoutIfNeeded];
+        self.agendaTopConstraint.constant = 0;
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            self.isAnimating = NO;
+        }];
+    }
+}
+
 - (void) calendarSelectedDate:(NSDate *)date {
     [self.agendaViewModel scrollAgendaToDate:date];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSInteger cellWidth = self.calendarViewModel.frame.size.width / 7;
+        self.calendarHeightConstraint.constant = cellWidth * 5;
+        self.agendaTopConstraint.constant = 0;
+    });
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isAnimating = YES;
     self.weeks = [@[] mutableCopy];
     [self.agendaViewModel setDelegate:self];
     [self.calendarViewModel setDelegate:self];
@@ -59,6 +102,11 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     [self.navigationController.navigationBar setTintColor:[UIColor mseBlueColor]];
     
     [self initializeWeeksArray];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.isAnimating = NO;
 }
 
 - (void)initializeWeeksArray {
@@ -77,6 +125,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     NSDate *firstDate = [self.weeks objectAtIndex:0];
     NSDate *lastDate = [self.utils addDays:6 toDate:[self.weeks lastObject]];
     [self.agendaViewModel loadAgendaFromDate:firstDate toDate:lastDate];

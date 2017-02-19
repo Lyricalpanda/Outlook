@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, assign) CGFloat cellHeight;
 
 @end
 
@@ -55,18 +56,21 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.bounds];
-    self.layer.masksToBounds = NO;
-    self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-    self.layer.shadowOpacity = 0.5f;
-    self.layer.shadowPath = shadowPath.CGPath;
-
+//    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.bounds];
+//    self.layer.masksToBounds = NO;
+//    self.layer.shadowColor = [UIColor blackColor].CGColor;
+//    self.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+//    self.layer.shadowOpacity = 0.5f;
+//    self.layer.shadowPath = shadowPath.CGPath;
 }
 
 - (void) layoutSubviews {
     [super layoutSubviews];
     [self.collectionView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        self.cellHeight = self.frame.size.height/5;
+    });
 
 }
 
@@ -139,6 +143,8 @@
     self.selectedIndexPath = newPath;
     self.selectedDate = date;
     
+    [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+    
     if (oldPath) {
         [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath, oldPath]];
     }
@@ -148,7 +154,6 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    MSECalendarCollectionViewCell *cell = (MSECalendarCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MSECalendarCollectionViewCell class]) forIndexPath:indexPath];
     if (self.selectedIndexPath == indexPath) {
         return;
     }
@@ -168,7 +173,7 @@
         width = (CGRectGetWidth(collectionView.frame) - (width) * 6);
     }
     
-    return CGSizeMake(width, (CGRectGetHeight(collectionView.frame)/5));
+    return CGSizeMake(width, self.cellHeight);
 }
 
 
@@ -184,9 +189,10 @@
     return cell;
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if ([self.delegate respondsToSelector:@selector(calendarScrolled)]) {
+        [self.delegate calendarScrolled];
+    }
 }
-
 
 @end

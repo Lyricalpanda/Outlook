@@ -10,6 +10,17 @@
 #import <UIKit/UIKit.h>
 #import "MSEAgendaProtocol.h"
 
+@protocol MSEAgendaProtocol <NSObject>
+
+@optional
+
+- (void) agendaScrolled;
+- (void) dateScrolled:(NSDate *)date;
+- (void) decrementedDate;
+- (void) incrementedDate;
+
+@end
+
 @interface MSEAgendaView : UIView <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) id<MSEAgendaProtocol> delegate;
