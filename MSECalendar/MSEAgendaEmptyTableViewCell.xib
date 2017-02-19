@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTS-tW-Xwp">
-                        <rect key="frame" x="8" y="11" width="69" height="21"/>
+                        <rect key="frame" x="16" y="11" width="69" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -29,9 +29,11 @@
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="XTS-tW-Xwp" secondAttribute="bottom" constant="3" id="82v-0G-Zac"/>
                     <constraint firstItem="XTS-tW-Xwp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="P2G-RT-FXr"/>
-                    <constraint firstItem="XTS-tW-Xwp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="WNw-nW-kWQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="XTS-tW-Xwp" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" constant="16" id="a7F-Sa-GM6"/>
+            </constraints>
         </tableViewCell>
     </objects>
 </document>

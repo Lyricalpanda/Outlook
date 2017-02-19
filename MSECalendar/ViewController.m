@@ -50,8 +50,10 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     self.weeks = [@[] mutableCopy];
     [self.agendaViewModel setDelegate:self];
     [self.calendarViewModel setDelegate:self];
+    
     self.utils = [MSECalendarUtils new];
     
+    self.title = @"February";
     
     [self.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController.navigationBar setTintColor:[UIColor mseBlueColor]];

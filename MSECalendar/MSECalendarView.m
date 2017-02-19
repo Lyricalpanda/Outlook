@@ -46,14 +46,28 @@
         
         [self.collectionView setBounces:NO];
         
+
+        
         [self initializeWeeksArray];
     }
     return self;
 }
 
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.bounds];
+    self.layer.masksToBounds = NO;
+    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    self.layer.shadowOpacity = 0.5f;
+    self.layer.shadowPath = shadowPath.CGPath;
+
+}
+
 - (void) layoutSubviews {
     [super layoutSubviews];
     [self.collectionView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+
 }
 
 - (void) initWithStartingDate:(NSDate *)date {

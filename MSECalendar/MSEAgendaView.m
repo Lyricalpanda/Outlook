@@ -37,6 +37,7 @@
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
+        [self.tableView setBounces:NO];
         [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MSEAgendaEmptyTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MSEAgendaEmptyTableViewCell class])];
         [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MSEAgendaEventTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MSEAgendaEventTableViewCell class])];
         [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MSEAgendaHeaderFooterView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([MSEAgendaHeaderFooterView class])];
@@ -94,7 +95,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70.0;
+    return 45.0;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
