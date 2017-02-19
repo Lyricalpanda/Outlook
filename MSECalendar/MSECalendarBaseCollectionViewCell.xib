@@ -11,31 +11,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MSECalendarSelectedCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MSECalendarBaseCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBX-zE-voS">
-                        <rect key="frame" x="22.5" y="22.5" width="30" height="30"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hcp-v7-b9b">
+                        <rect key="frame" x="0.0" y="49" width="50" height="1"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="Dxk-FN-i1h"/>
-                            <constraint firstAttribute="height" constant="30" id="tMO-Ak-kgz"/>
+                            <constraint firstAttribute="height" constant="1" id="dvq-sA-aoL"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="vBX-zE-voS" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="7Gf-qF-T1k"/>
-                <constraint firstItem="vBX-zE-voS" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="OFi-WV-gLS"/>
+                <constraint firstAttribute="trailing" secondItem="Hcp-v7-b9b" secondAttribute="trailing" id="Cd5-yo-JZb"/>
+                <constraint firstAttribute="bottom" secondItem="Hcp-v7-b9b" secondAttribute="bottom" id="gJT-Q3-3xl"/>
+                <constraint firstItem="Hcp-v7-b9b" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mLc-kx-fDK"/>
             </constraints>
             <connections>
-                <outlet property="colorView" destination="vBX-zE-voS" id="JWL-s5-cFV"/>
+                <outlet property="borderView" destination="Hcp-v7-b9b" id="fAJ-wm-In0"/>
+                <outlet property="height" destination="dvq-sA-aoL" id="tJD-y1-qg4"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="53.5"/>
         </collectionViewCell>
     </objects>
 </document>

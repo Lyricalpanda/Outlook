@@ -108,7 +108,7 @@
 //getEra
 
 - (NSString *)stringForDate:(NSDate *)date {
-    return [NSString stringWithFormat:@"%@ %@ %ld",[self weekdayName:[self weekdayOfWeekFromDate:date]], [self monthName:[self monthFromDate:date]], [self dayFromDate:date]];
+    return [[NSString stringWithFormat:@"%@ %@ %ld",[self weekdayName:[self weekdayOfWeekFromDate:date]], [self monthName:[self monthFromDate:date]], [self dayFromDate:date]] uppercaseString];
 }
 
 - (NSString *)monthAbbreviationFromMonth:(NSInteger)month {

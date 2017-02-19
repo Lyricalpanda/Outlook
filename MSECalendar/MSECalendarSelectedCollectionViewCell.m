@@ -6,7 +6,8 @@
 //  Copyright © 2017 Eric Harmon. All rights reserved.
 //
 
-#import "MSECalendarSelectedCollectionViewCell.h"
+#import "MSECalendarSelectedCollectionViewCell.h"  
+#import "UIColor+MSEColor.h"
 
 @interface MSECalendarSelectedCollectionViewCell()
 
@@ -18,10 +19,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-//    self.backgroundColor
-    [self.colorView setBackgroundColor:[UIColor blueColor]];
-    self.colorView.layer.cornerRadius = self.frame.size.height;
-    // Initialization code
+    [self.colorView setBackgroundColor:[UIColor mseBlueColor]];
+    self.colorView.layer.cornerRadius = self.colorView.frame.size.height/2;
 }
 
 @end

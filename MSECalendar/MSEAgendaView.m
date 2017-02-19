@@ -44,8 +44,14 @@
         [self setBackgroundColor:[UIColor orangeColor]];
         self.firstVisibleIndex = 0;
         self.utils = [MSECalendarUtils new];
+        
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self.tableView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 
 - (void) scrollAgendaToDate:(NSDate *)date {
@@ -79,12 +85,12 @@
     MSEAgendaHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([MSEAgendaHeaderFooterView class])];
     NSDate *date = [self.utils addDays:section toDate:self.firstDate];
     [view.dateLabel setText:[self.utils stringForDate:date]];
-    [view.contentView setBackgroundColor:[UIColor blueColor]];
+    [view.contentView setBackgroundColor:[UIColor whiteColor]];
     return view;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 70.0;
+    return 35.0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

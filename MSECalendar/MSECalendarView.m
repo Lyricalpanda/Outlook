@@ -11,6 +11,7 @@
 #import "MSECalendarSelectedCollectionViewCell.h"
 #import "MSECalendarUtils.h"
 #import "MSEMonth.h"
+#import "UIColor+MSEColor.h"
 
 @interface MSECalendarView()
 
@@ -33,7 +34,7 @@
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
         flowLayout.minimumInteritemSpacing = 0;
         flowLayout.minimumLineSpacing = 0;
-        flowLayout.itemSize =CGSizeMake(self.frame.size.width/7, self.frame.size.height/5);
+//        flowLayout.itemSize =CGSizeMake(self.frame.size.width/7, self.frame.size.height/5);
         
         self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) collectionViewLayout:flowLayout];
         [self addSubview:self.collectionView];
@@ -43,9 +44,8 @@
         [self.collectionView setDataSource:self];
         [self.collectionView setDelegate:self];
         
-        [self.collectionView setBackgroundColor:[UIColor redColor]];
-        [self setBackgroundColor:[UIColor orangeColor]];
-
+        [self.collectionView setBounces:NO];
+        
         [self initializeWeeksArray];
     }
     return self;
@@ -53,6 +53,7 @@
 
 - (void) layoutSubviews {
     [super layoutSubviews];
+    [self.collectionView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 
 - (void) initWithStartingDate:(NSDate *)date {
@@ -91,7 +92,7 @@
     NSDate *weekDay = [self.utils addDays:indexPath.row toDate:currentWeek];
     NSInteger month = [self.utils monthFromDate:weekDay];
     if (month % 2 == 0) {
-        [cell setBackgroundColor:[UIColor grayColor]];
+        [cell setBackgroundColor:[UIColor mseLightGrayBackgroundColor]];
     }
     else {
         [cell setBackgroundColor:[UIColor whiteColor]];
@@ -116,7 +117,6 @@
     if ([self.selectedDate isEqualToDate:date]) {
         return;
     }
-//    NSInteger dayOfTheWeek = [self.utils wee
     NSDate *week = [self.utils firstDayOfWeekFromDate:date];
     NSInteger row = [self.utils daysBetweenDate:week andDate:date];
     NSInteger section = [self.utils weeksBetweenDate:self.weeks[0] toDate:week];
@@ -145,8 +145,20 @@
     }
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat width = (int)CGRectGetWidth(collectionView.frame)/7;
+    
+    if (indexPath.row < 6) {
+    }
+    else {
+        width = (CGRectGetWidth(collectionView.frame) - (width) * 6);
+    }
+    
+    return CGSizeMake(width, (CGRectGetHeight(collectionView.frame)/5));
+}
+
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"Cell for section and row: %ld %ld", indexPath.section, indexPath.row);
     UICollectionViewCell *cell;
     
     if (indexPath.row == self.selectedIndexPath.row && indexPath.section == self.selectedIndexPath.section) {

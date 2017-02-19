@@ -7,6 +7,7 @@
 //
 
 #import "MSECalendarWeekdayView.h"
+#import "UIColor+MSEColor.h"
 
 @implementation MSECalendarWeekdayView
 
@@ -23,6 +24,8 @@
         // 4. add constraints to span entire view
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view":self.view}]];
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view":self.view}]];
+        
+        [self setBackgroundColor:[UIColor mseBlueColor]];
         
     }
     return self;

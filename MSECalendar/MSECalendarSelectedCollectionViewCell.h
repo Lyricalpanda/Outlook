@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSECalendarBaseCollectionViewCell.h"
 
-@interface MSECalendarSelectedCollectionViewCell : UICollectionViewCell
+@interface MSECalendarSelectedCollectionViewCell : MSECalendarBaseCollectionViewCell
 
 @end

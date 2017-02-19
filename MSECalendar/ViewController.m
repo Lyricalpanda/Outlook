@@ -6,6 +6,8 @@
 //  Copyright © 2017 Eric Harmon. All rights reserved.
 //
 
+#import "UIColor+MSEColor.h"
+
 #import "ViewController.h"
 #import "MSECalendarUtils.h"
 #import "MSECalendarCollectionViewCell.h"
@@ -50,7 +52,9 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     [self.calendarViewModel setDelegate:self];
     self.utils = [MSECalendarUtils new];
     
+    
     [self.navigationController.navigationBar setTranslucent:NO];
+    [self.navigationController.navigationBar setTintColor:[UIColor mseBlueColor]];
     
     [self initializeWeeksArray];
 }
