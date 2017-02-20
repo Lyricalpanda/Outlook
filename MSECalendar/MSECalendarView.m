@@ -12,6 +12,7 @@
 #import "MSECalendarUtils.h"
 #import "MSEMonth.h"
 #import "UIColor+MSEColor.h"
+#import "MSEEventStore.h"
 
 @interface MSECalendarView()
 
@@ -21,6 +22,8 @@
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) CGFloat cellHeight;
+
+@property (nonatomic) BOOL isScrolling;
 
 @end
 
@@ -36,6 +39,8 @@
         flowLayout.minimumInteritemSpacing = 0;
         flowLayout.minimumLineSpacing = 0;
 //        flowLayout.itemSize =CGSizeMake(self.frame.size.width/7, self.frame.size.height/5);
+        
+        [self setBackgroundColor:[UIColor whiteColor]];
         
         self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) collectionViewLayout:flowLayout];
         [self addSubview:self.collectionView];
@@ -116,19 +121,21 @@
         [cell setBackgroundColor:[UIColor whiteColor]];
     }
 
-    
+    MSECalendarBaseCollectionViewCell *mseCell = (MSECalendarBaseCollectionViewCell *) cell;
+
+    NSInteger day = [self.utils dayFromDate:weekDay];
     if (![cell isKindOfClass:[MSECalendarSelectedCollectionViewCell class]]) {
-        MSECalendarCollectionViewCell *mseCell = (MSECalendarCollectionViewCell *) cell;
-        NSInteger day = [self.utils dayFromDate:weekDay];
         if (day == 1) {
-            [mseCell.monthLabel setText:[self.utils monthAbbreviationFromMonth:month]];
+            [((MSECalendarCollectionViewCell * )mseCell).monthLabel setText:[self.utils monthAbbreviationFromMonth:month]];
         }
         else {
-            [mseCell.monthLabel setText:@""];
+            [((MSECalendarCollectionViewCell * )mseCell).monthLabel setText:@""];
         }
         
-        [mseCell.dateNumberLabel setText:[NSString stringWithFormat:@"%ld", day]];
     }
+    NSArray *events = [[MSEEventStore mainStore] eventsForDate:weekDay];
+    NSLog(@"Events: %@", events);
+    [mseCell.dateNumberLabel setText:[NSString stringWithFormat:@"%ld", day]];
 }
 
 - (void) selectedDate:(NSDate *)date {
@@ -189,9 +196,30 @@
     return cell;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    self.isScrolling = YES;
+}
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if ([self.delegate respondsToSelector:@selector(calendarScrolled)]) {
+    if (self.isScrolling && [self.delegate respondsToSelector:@selector(calendarScrolled)]) {
         [self.delegate calendarScrolled];
+    }
+}
+
+- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        self.isScrolling = NO;
+        if ([self.delegate respondsToSelector:@selector(calendarFinishedScrolling)]) {
+            [self.delegate calendarFinishedScrolling];
+        }
+    }
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    self.isScrolling = NO;
+    if ([self.delegate respondsToSelector:@selector(calendarFinishedScrolling)]) {
+        [self.delegate calendarFinishedScrolling];
     }
 }
 

@@ -12,20 +12,23 @@
 @interface MSECalendarBaseCollectionViewCell()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
+@property (nonatomic, strong) UIView *seperatorView;
 
 @end
 
 @implementation MSECalendarBaseCollectionViewCell
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.seperatorView = [UIView new];
+    }
+    return self;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self.borderView setBackgroundColor:[UIColor mseSeperatorColor]];
-    UIScreen* mainScreen = [UIScreen mainScreen];
-    CGFloat onePixel = 1.0 / mainScreen.scale;
-    if ([mainScreen respondsToSelector:@selector(nativeScale)])
-        onePixel = 1.0 / mainScreen.nativeScale;
-    [self.height setConstant:onePixel];
 }
 
 @end

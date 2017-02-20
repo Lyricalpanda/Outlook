@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F31233A41E57FA2300231974 /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = F31233A31E57FA2300231974 /* events.json */; };
 		F31233A81E5801AC00231974 /* MSECalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31233A71E5801AC00231974 /* MSECalendarWeekdayView.m */; };
 		F31233AA1E5801C000231974 /* MSECalendarWeekdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31233A91E5801C000231974 /* MSECalendarWeekdayView.xib */; };
 		F31233AE1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F31233AC1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.m */; };
 		F31233AF1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31233AD1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.xib */; };
 		F31233B61E58DC4C00231974 /* UIColor+MSEColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F31233B51E58DC4C00231974 /* UIColor+MSEColor.m */; };
+		F31233BA1E5AC5F400231974 /* MSEEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F31233B91E5AC5F400231974 /* MSEEventStore.m */; };
+		F31233BC1E5AC82C00231974 /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = F31233BB1E5AC82C00231974 /* events.json */; };
 		F318C5951E47E57600300755 /* MSEWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = F318C5941E47E57600300755 /* MSEWeek.m */; };
 		F318C5981E47E58000300755 /* MSEDate.m in Sources */ = {isa = PBXBuildFile; fileRef = F318C5971E47E58000300755 /* MSEDate.m */; };
 		F31D4CBD1E499EF100065C34 /* MSECalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D4CBC1E499EF100065C34 /* MSECalendarView.m */; };
@@ -60,7 +61,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F31233A31E57FA2300231974 /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
 		F31233A61E5801AC00231974 /* MSECalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarWeekdayView.h; sourceTree = "<group>"; };
 		F31233A71E5801AC00231974 /* MSECalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarWeekdayView.m; sourceTree = "<group>"; };
 		F31233A91E5801C000231974 /* MSECalendarWeekdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSECalendarWeekdayView.xib; sourceTree = "<group>"; };
@@ -69,6 +69,9 @@
 		F31233AD1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSECalendarBaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		F31233B41E58DC4C00231974 /* UIColor+MSEColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MSEColor.h"; sourceTree = "<group>"; };
 		F31233B51E58DC4C00231974 /* UIColor+MSEColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MSEColor.m"; sourceTree = "<group>"; };
+		F31233B81E5AC5F400231974 /* MSEEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEEventStore.h; sourceTree = "<group>"; };
+		F31233B91E5AC5F400231974 /* MSEEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEEventStore.m; sourceTree = "<group>"; };
+		F31233BB1E5AC82C00231974 /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
 		F318C5931E47E57600300755 /* MSEWeek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEWeek.h; sourceTree = "<group>"; };
 		F318C5941E47E57600300755 /* MSEWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEWeek.m; sourceTree = "<group>"; };
 		F318C5961E47E58000300755 /* MSEDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEDate.h; sourceTree = "<group>"; };
@@ -149,7 +152,7 @@
 		F31233A21E57FA0700231974 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F31233A31E57FA2300231974 /* events.json */,
+				F31233BB1E5AC82C00231974 /* events.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -175,6 +178,15 @@
 				F31233B51E58DC4C00231974 /* UIColor+MSEColor.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		F31233B71E5AC5D800231974 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				F31233B81E5AC5F400231974 /* MSEEventStore.h */,
+				F31233B91E5AC5F400231974 /* MSEEventStore.m */,
+			);
+			name = Stores;
 			sourceTree = "<group>";
 		};
 		F31D4CBA1E499EE500065C34 /* ViewModels */ = {
@@ -233,6 +245,7 @@
 		F32C25501E42B6F5006F8C77 /* MSECalendar */ = {
 			isa = PBXGroup;
 			children = (
+				F31233B71E5AC5D800231974 /* Stores */,
 				F31233B01E58DC1F00231974 /* Categories */,
 				F31233A51E57FF5300231974 /* Views */,
 				F31233A21E57FA0700231974 /* Resources */,
@@ -430,7 +443,6 @@
 			files = (
 				F31D4D0B1E4AE9C300065C34 /* MSEAgendaHeaderFooterView.xib in Resources */,
 				F3216B821E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.xib in Resources */,
-				F31233A41E57FA2300231974 /* events.json in Resources */,
 				F31233AA1E5801C000231974 /* MSECalendarWeekdayView.xib in Resources */,
 				F31D4D151E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.xib in Resources */,
 				F32C258D1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib in Resources */,
@@ -438,6 +450,7 @@
 				F32C25611E42B6F5006F8C77 /* LaunchScreen.storyboard in Resources */,
 				F32C255E1E42B6F5006F8C77 /* Assets.xcassets in Resources */,
 				F32C255C1E42B6F5006F8C77 /* Main.storyboard in Resources */,
+				F31233BC1E5AC82C00231974 /* events.json in Resources */,
 				F31D4D1A1E4AEA8300065C34 /* MSEAgendaEventTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +482,7 @@
 				F31D4D191E4AEA8300065C34 /* MSEAgendaEventTableViewCell.m in Sources */,
 				F31D4D141E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.m in Sources */,
 				F32C25591E42B6F5006F8C77 /* ViewController.m in Sources */,
+				F31233BA1E5AC5F400231974 /* MSEEventStore.m in Sources */,
 				F31233B61E58DC4C00231974 /* UIColor+MSEColor.m in Sources */,
 				F31233A81E5801AC00231974 /* MSECalendarWeekdayView.m in Sources */,
 				F32C25871E42B719006F8C77 /* MSECalendarUtils.m in Sources */,

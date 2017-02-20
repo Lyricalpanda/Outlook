@@ -15,6 +15,7 @@
 @optional
 
 - (void) agendaScrolled;
+- (void) agendaFinishedScrolling;
 - (void) dateScrolled:(NSDate *)date;
 - (void) decrementedDate;
 - (void) incrementedDate;

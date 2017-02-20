@@ -21,6 +21,7 @@
     [super awakeFromNib];
     [self.colorView setBackgroundColor:[UIColor mseBlueColor]];
     self.colorView.layer.cornerRadius = self.colorView.frame.size.height/2;
+    [self.dateNumberLabel setTextColor:[UIColor whiteColor]];
 }
 
 @end

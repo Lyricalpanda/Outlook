@@ -15,6 +15,7 @@
 
 - (void) calendarSelectedDate:(NSDate *)date;
 - (void) calendarScrolled;
+- (void) calendarFinishedScrolling;
 
 @end
 

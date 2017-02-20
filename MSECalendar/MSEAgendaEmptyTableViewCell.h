@@ -10,4 +10,6 @@
 
 @interface MSEAgendaEmptyTableViewCell : UITableViewCell
 
+- (void) isEndingCell:(BOOL) isEndingCell;
+
 @end

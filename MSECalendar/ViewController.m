@@ -18,6 +18,7 @@
 #import "MSEAgendaProtocol.h"
 #import "MSECalendarUtils.h"
 #import "MSECalendarWeekdayView.h"
+#import "MSEEventStore.h"
 
 NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
@@ -38,7 +39,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
 @property (nonatomic, assign) BOOL isAnimating;
 @property (nonatomic, assign) BOOL isScrolling;
-
+@property (nonatomic, assign) BOOL isCalendarSmall;
 
 @end
 
@@ -48,28 +49,59 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     [self.calendarViewModel selectedDate:date];
 }
 
+- (void) agendaFinishedScrolling {
+    self.isScrolling = NO;
+}
+
+- (void) calendarFinishedScrolling {
+    self.isScrolling = NO;
+}
+
 - (void) agendaScrolled {
-    if (!self.isAnimating) {
-        [self.view layoutIfNeeded];
-        NSInteger cellWidth = self.calendarViewModel.frame.size.width / 7;
-        self.agendaTopConstraint.constant = -1 * cellWidth * 3;
-        [UIView animateWithDuration:0.5 animations:^{
+    if (!self.isScrolling) {
+        self.isScrolling = YES;
+        if (!self.isAnimating && !self.isCalendarSmall) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.view layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            self.isAnimating = NO;
-        }];
+            NSInteger cellWidth = self.calendarViewModel.frame.size.width / 7;
+            self.agendaTopConstraint.constant = -1 * cellWidth * 3;
+                [UIView animateWithDuration:0.5 animations:^{
+                    [self.view layoutIfNeeded];
+                } completion:^(BOOL finished) {
+            //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //                [UIView animateWithDuration:1.0 delay:0 options:0 animations:^{
+            //                    // Your animation code
+            //                } completion:^(BOOL finished) {
+            //                    // Your completion code
+            //                }];
+    //                });
+                    if (finished) {
+                    self.isCalendarSmall = YES;
+                    self.agendaTopConstraint.constant = 0;
+                    self.calendarHeightConstraint.constant = cellWidth * 2;
+                    self.isAnimating = NO;
+                    }
+                }];
+            });
+        }
     }
 }
 
 - (void)calendarScrolled {
-    if (!self.isAnimating) {
-        [self.view layoutIfNeeded];
-        self.agendaTopConstraint.constant = 0;
-        [UIView animateWithDuration:0.5 animations:^{
+    if (!self.isScrolling) {
+        self.isScrolling = YES;
+        if (!self.isAnimating && self.isCalendarSmall) {
             [self.view layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            self.isAnimating = NO;
-        }];
+            self.agendaTopConstraint.constant = 0;
+            NSInteger cellWidth = self.calendarViewModel.frame.size.width / 7;
+            self.calendarHeightConstraint.constant = cellWidth * 5;
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.view layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                self.isAnimating = NO;
+                self.isCalendarSmall = NO;
+            }];
+        }
     }
 }
 
@@ -89,6 +121,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [MSEEventStore mainStore];
     self.isAnimating = YES;
     self.weeks = [@[] mutableCopy];
     [self.agendaViewModel setDelegate:self];

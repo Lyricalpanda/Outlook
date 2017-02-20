@@ -146,4 +146,8 @@
     return [difference day];
 }
 
++ (NSInteger)minutesBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2 {
+    return fabs([date1 timeIntervalSinceDate:date2]) / 60;
+}
+
 @end

@@ -11,5 +11,6 @@
 @interface MSECalendarBaseCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, weak) IBOutlet UIView *borderView;
+@property (nonatomic, weak) IBOutlet UILabel *dateNumberLabel;
 
 @end

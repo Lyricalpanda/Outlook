@@ -20,10 +20,29 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBX-zE-voS">
                         <rect key="frame" x="22.5" y="22.5" width="30" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n7-I5-p1v">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="7n7-I5-p1v" secondAttribute="bottom" id="6Fy-Mi-CCT"/>
                             <constraint firstAttribute="width" constant="30" id="Dxk-FN-i1h"/>
+                            <constraint firstItem="7n7-I5-p1v" firstAttribute="leading" secondItem="vBX-zE-voS" secondAttribute="leading" id="GHK-AO-17B"/>
+                            <constraint firstItem="7n7-I5-p1v" firstAttribute="top" secondItem="vBX-zE-voS" secondAttribute="top" id="WwK-bY-p0K"/>
+                            <constraint firstAttribute="trailing" secondItem="7n7-I5-p1v" secondAttribute="trailing" id="hsl-PY-aKl"/>
                             <constraint firstAttribute="height" constant="30" id="tMO-Ak-kgz"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2f-oa-kk4">
+                        <rect key="frame" x="0.0" y="74" width="75" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="fry-ak-QgM"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -31,9 +50,15 @@
             <constraints>
                 <constraint firstItem="vBX-zE-voS" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="7Gf-qF-T1k"/>
                 <constraint firstItem="vBX-zE-voS" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="OFi-WV-gLS"/>
+                <constraint firstAttribute="trailing" secondItem="V2f-oa-kk4" secondAttribute="trailing" id="U90-m5-kvV"/>
+                <constraint firstAttribute="bottom" secondItem="V2f-oa-kk4" secondAttribute="bottom" id="gev-FZ-Nkp"/>
+                <constraint firstItem="V2f-oa-kk4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rxU-36-uLf"/>
             </constraints>
             <connections>
+                <outlet property="borderView" destination="V2f-oa-kk4" id="bKx-Dy-4ON"/>
                 <outlet property="colorView" destination="vBX-zE-voS" id="JWL-s5-cFV"/>
+                <outlet property="dateNumberLabel" destination="7n7-I5-p1v" id="9Oo-EO-GOX"/>
+                <outlet property="height" destination="fry-ak-QgM" id="vGI-Og-Frz"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </collectionViewCell>

@@ -11,7 +11,6 @@
 
 @interface MSECalendarCollectionViewCell : MSECalendarBaseCollectionViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *dateNumberLabel;
 @property (nonatomic, weak) IBOutlet UILabel *monthLabel;
 @property (nonatomic, weak) UIImageView *circleImageView;
 @property (nonatomic, weak) IBOutlet UILabel *yearLabel;

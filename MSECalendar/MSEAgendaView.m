@@ -38,6 +38,7 @@
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         [self.tableView setBounces:NO];
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
         [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MSEAgendaEmptyTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MSEAgendaEmptyTableViewCell class])];
         [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MSEAgendaEventTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MSEAgendaEventTableViewCell class])];
         [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MSEAgendaHeaderFooterView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([MSEAgendaHeaderFooterView class])];
@@ -73,12 +74,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 2;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    MSEAgendaEmptyTableViewCell *emptyCell = (MSEAgendaEmptyTableViewCell *)cell;
+    if (indexPath.row == 0) {
+        [emptyCell isEndingCell:NO];
+    }
+    else {
+        [emptyCell isEndingCell:YES];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MSEAgendaEmptyTableViewCell *emptyCell = (MSEAgendaEmptyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MSEAgendaEmptyTableViewCell class])];
-    [emptyCell setBackgroundColor:[UIColor redColor]];
     return emptyCell;
 }
 
@@ -98,6 +108,10 @@
     return 45.0;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    NSLog(@"Begin dragging");
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSArray* indexPaths = [self.tableView indexPathsForVisibleRows];
     NSArray* sortedIndexPaths = [indexPaths sortedArrayUsingSelector:@selector(compare:)];
@@ -110,6 +124,13 @@
             [self.delegate dateScrolled:[self.utils addDays:section toDate:self.firstDate]];
         }
         self.firstVisibleIndex = section;
+    }
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSLog(@"End dragging");
+    if ([self.delegate respondsToSelector:@selector(agendaFinishedScrolling)]) {
+        [self.delegate agendaFinishedScrolling];
     }
 }
 
