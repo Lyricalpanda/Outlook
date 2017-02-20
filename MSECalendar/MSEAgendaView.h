@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "MSEAgendaProtocol.h"
 
 @protocol MSEAgendaProtocol <NSObject>
 

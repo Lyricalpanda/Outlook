@@ -14,6 +14,7 @@
 #import "UIColor+MSEColor.h"
 #import "MSEEventStore.h"
 #import "UICollectionView+MSECalendar.h"
+#import "MSEDate.h"
 
 @interface MSECalendarView()
 
@@ -115,22 +116,28 @@
     }
 
     MSECalendarBaseCollectionViewCell *mseCell = (MSECalendarBaseCollectionViewCell *) cell;
-
-    NSInteger day = [self.utils dayFromDate:weekDay];
-    if (![cell isKindOfClass:[MSECalendarSelectedCollectionViewCell class]]) {
-        if (day == 1) {
-            [((MSECalendarCollectionViewCell * )mseCell).monthLabel setText:[self.utils monthAbbreviationFromMonth:month]];
-        }
-        else {
-            [((MSECalendarCollectionViewCell * )mseCell).monthLabel setText:@""];
-        }
-        
-    }
-    NSArray *events = [[MSEEventStore mainStore] eventsForDate:weekDay];
-    [mseCell.dateNumberLabel setText:[NSString stringWithFormat:@"%ld", day]];
+    MSEDate *date = [[MSEDate alloc] initWithEvents:[[MSEEventStore mainStore] eventsForDate:weekDay] andDate:weekDay];
+    [mseCell initWithDate:date];
+    
+//    NSInteger day = [self.utils dayFromDate:weekDay];
+//    if (![cell isKindOfClass:[MSECalendarSelectedCollectionViewCell class]]) {
+//        if (day == 1) {
+//            [((MSECalendarCollectionViewCell * )mseCell).monthLabel setText:[self.utils monthAbbreviationFromMonth:month]];
+//        }
+//        else {
+//            [((MSECalendarCollectionViewCell * )mseCell).monthLabel setText:@""];
+//        }
+//        
+//    }
+//    NSArray *events = [[MSEEventStore mainStore] eventsForDate:weekDay];
+//    [mseCell.dateNumberLabel setText:[NSString stringWithFormat:@"%ld", day]];
 }
 
 - (void) selectedDate:(NSDate *)date {
+    [self selectedDate:date shouldScroll:YES];
+}
+
+- (void) selectedDate:(NSDate *)date shouldScroll:(BOOL)isScrolling{
     if ([self.selectedDate isEqualToDate:date]) {
         return;
     }
@@ -142,7 +149,9 @@
     self.selectedIndexPath = newPath;
     self.selectedDate = date;
     
-    [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+    if (isScrolling){
+        [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+    }
     
     if (oldPath) {
         [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath, oldPath]];
@@ -157,7 +166,7 @@
         return;
     }
 
-    [self selectedDate:[self.utils addDays:indexPath.row toDate:[self.weeks objectAtIndex:indexPath.section]]];
+    [self selectedDate:[self.utils addDays:indexPath.row toDate:[self.weeks objectAtIndex:indexPath.section]] shouldScroll:NO];
     if ([self.delegate respondsToSelector:@selector(calendarSelectedDate:)]) {
         [self.delegate calendarSelectedDate:self.selectedDate];
     }

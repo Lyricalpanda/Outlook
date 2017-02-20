@@ -7,6 +7,7 @@
 //
 
 #import "MSEDate.h"
+#import "MSECalendarUtils.h"
 
 @implementation MSEDate
 

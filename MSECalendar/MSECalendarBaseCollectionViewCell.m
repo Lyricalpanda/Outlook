@@ -8,11 +8,12 @@
 
 #import "MSECalendarBaseCollectionViewCell.h"
 #import "UIColor+MSEColor.h"
+#import "MSECalendarUtils.h"
+#import "MSEDate.h"
 
 @interface MSECalendarBaseCollectionViewCell()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
-@property (nonatomic, strong) UIView *seperatorView;
 
 @end
 
@@ -21,7 +22,6 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.seperatorView = [UIView new];
     }
     return self;
 }
@@ -29,6 +29,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self.borderView setBackgroundColor:[UIColor mseSeperatorColor]];
+}
+
+- (void) initWithDate:(MSEDate *)date {
+    MSECalendarUtils *utils = [MSECalendarUtils new];
+    NSInteger day = [utils dayFromDate:[date date]];
+
+    [self.dateNumberLabel setText:[NSString stringWithFormat:@"%ld", day]];
 }
 
 @end

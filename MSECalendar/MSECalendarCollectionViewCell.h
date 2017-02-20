@@ -8,12 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MSECalendarBaseCollectionViewCell.h"
+//@class MSEDate;
 
 @interface MSECalendarCollectionViewCell : MSECalendarBaseCollectionViewCell
-
-@property (nonatomic, weak) IBOutlet UILabel *monthLabel;
-@property (nonatomic, weak) UIImageView *circleImageView;
-@property (nonatomic, weak) IBOutlet UILabel *yearLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *highlightImageView;
 
 @end

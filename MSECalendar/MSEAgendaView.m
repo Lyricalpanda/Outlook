@@ -194,20 +194,21 @@
     NSArray* indexPaths = [self.tableView indexPathsForVisibleRows];
     NSArray* sortedIndexPaths = [indexPaths sortedArrayUsingSelector:@selector(compare:)];
     NSInteger section = [(NSIndexPath*)[sortedIndexPaths objectAtIndex:0] section];
-    if ([self.delegate respondsToSelector:@selector(agendaScrolled)]) {
-        [self.delegate agendaScrolled];
-    }
-    if (section != self.firstVisibleIndex) {
+    if (self.isScrolling) {
+        if ([self.delegate respondsToSelector:@selector(agendaScrolled)]) {
+            [self.delegate agendaScrolled];
+        }
         if ([self.delegate respondsToSelector:@selector(dateScrolled:)]) {
             [self.delegate dateScrolled:[self.utils addDays:section toDate:self.firstDate]];
         }
-        self.firstVisibleIndex = section;
     }
 }
 
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    self.isScrolling = NO;
+    if (!decelerate){
+        self.isScrolling = NO;
+    }
 }
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

@@ -15,7 +15,6 @@
 #import "MSECalendarView.h"
 #import "MSEAgendaView.h"
 #import "MSEMonth.h"
-#import "MSEAgendaProtocol.h"
 #import "MSECalendarUtils.h"
 #import "MSECalendarWeekdayView.h"
 #import "MSEEventStore.h"

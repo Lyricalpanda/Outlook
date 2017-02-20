@@ -16,5 +16,7 @@
 @property (nonatomic, strong) NSArray<MSEEvent *> *events;
 
 - (instancetype) initWithEvents:(NSArray *)events andDate:(NSDate *)date;
+- (NSInteger)dayOfTheMonth;
+
 
 @end

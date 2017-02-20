@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MSEDate;
 
 @interface MSECalendarBaseCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, weak) IBOutlet UIView *borderView;
 @property (nonatomic, weak) IBOutlet UILabel *dateNumberLabel;
+
+- (void) initWithDate:(MSEDate *)date;
 
 @end
