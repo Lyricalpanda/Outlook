@@ -13,6 +13,7 @@
 #import "MSEMonth.h"
 #import "UIColor+MSEColor.h"
 #import "MSEEventStore.h"
+#import "UICollectionView+MSECalendar.h"
 
 @interface MSECalendarView()
 
@@ -32,41 +33,34 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.weeks = [@[] mutableCopy];
-        self.utils = [MSECalendarUtils new];
-        
-        UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
-        flowLayout.minimumInteritemSpacing = 0;
-        flowLayout.minimumLineSpacing = 0;
-        
-        [self setBackgroundColor:[UIColor whiteColor]];
-        
-        [self.collectionView setBackgroundColor:[UIColor whiteColor]];
-        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) collectionViewLayout:flowLayout];
-        [self addSubview:self.collectionView];
-        
-        [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MSECalendarSelectedCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([MSECalendarSelectedCollectionViewCell class])];
-        [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MSECalendarCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([MSECalendarCollectionViewCell class])];
-        [self.collectionView setDataSource:self];
-        [self.collectionView setDelegate:self];
-        
-        [self.collectionView setBounces:NO];
-        
-
-        
-        [self initializeWeeksArray];
+        [self initCalendarView];
     }
     return self;
 }
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-//    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.bounds];
-//    self.layer.masksToBounds = NO;
-//    self.layer.shadowColor = [UIColor blackColor].CGColor;
-//    self.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-//    self.layer.shadowOpacity = 0.5f;
-//    self.layer.shadowPath = shadowPath.CGPath;
+- (void) initCalendarView {
+    self.weeks = [@[] mutableCopy];
+    self.utils = [MSECalendarUtils new];
+    [self setBackgroundColor:[UIColor whiteColor]];
+    [self initCollectionView];
+    [self initializeWeeksArray];
+}
+
+- (void) initCollectionView{
+    UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
+    flowLayout.minimumInteritemSpacing = 0;
+    flowLayout.minimumLineSpacing = 0;
+
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) collectionViewLayout:flowLayout];
+    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    
+    [self.collectionView registerNibForCellFromClass:[MSECalendarSelectedCollectionViewCell class]];
+    [self.collectionView registerNibForCellFromClass:[MSECalendarCollectionViewCell class]];
+    [self.collectionView setDataSource:self];
+    [self.collectionView setDelegate:self];
+    [self.collectionView setBounces:NO];
+
+    [self addSubview:self.collectionView];
 }
 
 - (void) layoutSubviews {
@@ -81,7 +75,6 @@
 
 - (void) initWithStartingDate:(NSDate *)date {
     [self.collectionView reloadData];
-    
 }
 
 - (void)initializeWeeksArray {

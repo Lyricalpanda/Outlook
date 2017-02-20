@@ -29,6 +29,7 @@
 @property (nonatomic, strong) MSECalendarUtils *utils;
 @property (nonatomic) NSUInteger firstVisibleIndex;
 
+@property (nonatomic) BOOL isScrolling;
 @end
 
 @implementation MSEAgendaView
@@ -185,6 +186,7 @@
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    self.isScrolling = YES;
     NSLog(@"Begin dragging");
 }
 
@@ -203,8 +205,13 @@
     }
 }
 
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    self.isScrolling = NO;
+}
+
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"End dragging");
+    self.isScrolling = NO;
     if ([self.delegate respondsToSelector:@selector(agendaFinishedScrolling)]) {
         [self.delegate agendaFinishedScrolling];
     }
