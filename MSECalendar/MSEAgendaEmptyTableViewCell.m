@@ -34,15 +34,7 @@
 - (void) drawRect:(CGRect)rect {
     [super drawRect:rect];
     [self.seperatorView setBackgroundColor:[UIColor mseSeperatorColor]];
-}
-
-- (void)isEndingCell:(BOOL)isEndingCell {
-    if (isEndingCell) {
-        [self.seperatorView setFrame:CGRectMake(0, self.frame.size.height-1, self.frame.size.width, 1)];
-    }
-    else {
-        [self.seperatorView setFrame:CGRectMake(16, self.frame.size.height-1, self.frame.size.width, 1)];
-    }
+    [self.seperatorView setFrame:CGRectMake(0, rect.size.height-1, rect.size.width, 1)];
 }
 
 @end

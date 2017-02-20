@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class MSEEvent;
+
 @interface MSEAgendaEventTableViewCell : UITableViewCell
+
+- (void) initWithEvent:(MSEEvent *)event isEndingRow:(BOOL)isEnd;
 
 @end

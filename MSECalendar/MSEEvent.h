@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, MSEEventColor) {
-    Blue,
+    Blue = 1,
     Green,
     Red
 };

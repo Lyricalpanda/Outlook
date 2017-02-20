@@ -19,10 +19,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
     [[UINavigationBar appearance] setBarTintColor:[UIColor mseBlueColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [UINavigationBar appearance].shadowImage = [UIImage new];
-    //    [[UINavigationBar appearance] setTintColor:[UIColor orangeAnyPerkColor]];
-  return YES;
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    return YES;
 }
 
 

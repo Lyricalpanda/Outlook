@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class MSEEvent;
+
 @interface MSEDate : NSObject
+
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSArray<MSEEvent *> *events;
+
+- (instancetype) initWithEvents:(NSArray *)events andDate:(NSDate *)date;
 
 @end

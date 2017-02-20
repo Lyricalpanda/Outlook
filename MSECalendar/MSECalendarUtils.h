@@ -28,5 +28,6 @@
 - (NSString *)stringForDate:(NSDate *)date;
 - (NSInteger)weeksBetweenDate:(NSDate *)fromDateTime toDate:(NSDate *)toDateTime;
 + (NSInteger)minutesBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2;
++ (NSInteger)timeBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2;
 
 @end

@@ -38,10 +38,10 @@
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
         flowLayout.minimumInteritemSpacing = 0;
         flowLayout.minimumLineSpacing = 0;
-//        flowLayout.itemSize =CGSizeMake(self.frame.size.width/7, self.frame.size.height/5);
         
         [self setBackgroundColor:[UIColor whiteColor]];
         
+        [self.collectionView setBackgroundColor:[UIColor whiteColor]];
         self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) collectionViewLayout:flowLayout];
         [self addSubview:self.collectionView];
         
@@ -134,7 +134,6 @@
         
     }
     NSArray *events = [[MSEEventStore mainStore] eventsForDate:weekDay];
-    NSLog(@"Events: %@", events);
     [mseCell.dateNumberLabel setText:[NSString stringWithFormat:@"%ld", day]];
 }
 
@@ -193,6 +192,8 @@
     else {
         cell = (MSECalendarCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MSECalendarCollectionViewCell class]) forIndexPath:indexPath];
     }
+    
+    
     return cell;
 }
 

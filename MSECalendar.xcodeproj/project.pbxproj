@@ -16,6 +16,10 @@
 		F31233BC1E5AC82C00231974 /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = F31233BB1E5AC82C00231974 /* events.json */; };
 		F318C5951E47E57600300755 /* MSEWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = F318C5941E47E57600300755 /* MSEWeek.m */; };
 		F318C5981E47E58000300755 /* MSEDate.m in Sources */ = {isa = PBXBuildFile; fileRef = F318C5971E47E58000300755 /* MSEDate.m */; };
+		F31BEF2C1E5AF94600B64C43 /* UITableView+MSETableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF2B1E5AF94600B64C43 /* UITableView+MSETableView.m */; };
+		F31BEF301E5B01A700B64C43 /* MSENetworkingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF2F1E5B01A700B64C43 /* MSENetworkingClient.m */; };
+		F31BEF331E5B037300B64C43 /* MSEWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF321E5B037300B64C43 /* MSEWeather.m */; };
+		F31BEF361E5B03FA00B64C43 /* MSEWeatherStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF351E5B03FA00B64C43 /* MSEWeatherStore.m */; };
 		F31D4CBD1E499EF100065C34 /* MSECalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D4CBC1E499EF100065C34 /* MSECalendarView.m */; };
 		F31D4CC01E49A07300065C34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31D4CBF1E49A07300065C34 /* UIKit.framework */; };
 		F31D4CC41E49BE7900065C34 /* MSEAgendaView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D4CC31E49BE7900065C34 /* MSEAgendaView.m */; };
@@ -39,7 +43,6 @@
 		F32C25871E42B719006F8C77 /* MSECalendarUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25861E42B719006F8C77 /* MSECalendarUtils.m */; };
 		F32C258C1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C258A1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m */; };
 		F32C258D1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32C258B1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib */; };
-		F32C25911E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */; };
 		F32C259E1E430E23006F8C77 /* MSEMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C259D1E430E23006F8C77 /* MSEMonth.m */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +79,14 @@
 		F318C5941E47E57600300755 /* MSEWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEWeek.m; sourceTree = "<group>"; };
 		F318C5961E47E58000300755 /* MSEDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEDate.h; sourceTree = "<group>"; };
 		F318C5971E47E58000300755 /* MSEDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEDate.m; sourceTree = "<group>"; };
+		F31BEF2A1E5AF94600B64C43 /* UITableView+MSETableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+MSETableView.h"; sourceTree = "<group>"; };
+		F31BEF2B1E5AF94600B64C43 /* UITableView+MSETableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+MSETableView.m"; sourceTree = "<group>"; };
+		F31BEF2E1E5B01A700B64C43 /* MSENetworkingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSENetworkingClient.h; sourceTree = "<group>"; };
+		F31BEF2F1E5B01A700B64C43 /* MSENetworkingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSENetworkingClient.m; sourceTree = "<group>"; };
+		F31BEF311E5B037300B64C43 /* MSEWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEWeather.h; sourceTree = "<group>"; };
+		F31BEF321E5B037300B64C43 /* MSEWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEWeather.m; sourceTree = "<group>"; };
+		F31BEF341E5B03FA00B64C43 /* MSEWeatherStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEWeatherStore.h; sourceTree = "<group>"; };
+		F31BEF351E5B03FA00B64C43 /* MSEWeatherStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEWeatherStore.m; sourceTree = "<group>"; };
 		F31D4CBB1E499EF100065C34 /* MSECalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarView.h; sourceTree = "<group>"; };
 		F31D4CBC1E499EF100065C34 /* MSECalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarView.m; sourceTree = "<group>"; };
 		F31D4CBF1E49A07300065C34 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -117,8 +128,6 @@
 		F32C25891E42BED2006F8C77 /* MSECalendarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarCollectionViewCell.h; sourceTree = "<group>"; };
 		F32C258A1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarCollectionViewCell.m; sourceTree = "<group>"; };
 		F32C258B1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSECalendarCollectionViewCell.xib; sourceTree = "<group>"; };
-		F32C258F1E42C5B3006F8C77 /* MSECollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		F32C259C1E430E23006F8C77 /* MSEMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEMonth.h; sourceTree = "<group>"; };
 		F32C259D1E430E23006F8C77 /* MSEMonth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEMonth.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +185,8 @@
 			children = (
 				F31233B41E58DC4C00231974 /* UIColor+MSEColor.h */,
 				F31233B51E58DC4C00231974 /* UIColor+MSEColor.m */,
+				F31BEF2A1E5AF94600B64C43 /* UITableView+MSETableView.h */,
+				F31BEF2B1E5AF94600B64C43 /* UITableView+MSETableView.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -185,8 +196,19 @@
 			children = (
 				F31233B81E5AC5F400231974 /* MSEEventStore.h */,
 				F31233B91E5AC5F400231974 /* MSEEventStore.m */,
+				F31BEF341E5B03FA00B64C43 /* MSEWeatherStore.h */,
+				F31BEF351E5B03FA00B64C43 /* MSEWeatherStore.m */,
 			);
 			name = Stores;
+			sourceTree = "<group>";
+		};
+		F31BEF2D1E5B019300B64C43 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F31BEF2E1E5B01A700B64C43 /* MSENetworkingClient.h */,
+				F31BEF2F1E5B01A700B64C43 /* MSENetworkingClient.m */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 		F31D4CBA1E499EE500065C34 /* ViewModels */ = {
@@ -245,6 +267,7 @@
 		F32C25501E42B6F5006F8C77 /* MSECalendar */ = {
 			isa = PBXGroup;
 			children = (
+				F31BEF2D1E5B019300B64C43 /* Networking */,
 				F31233B71E5AC5D800231974 /* Stores */,
 				F31233B01E58DC1F00231974 /* Categories */,
 				F31233A51E57FF5300231974 /* Views */,
@@ -298,8 +321,6 @@
 			children = (
 				F32C25851E42B719006F8C77 /* MSECalendarUtils.h */,
 				F32C25861E42B719006F8C77 /* MSECalendarUtils.m */,
-				F32C258F1E42C5B3006F8C77 /* MSECollectionViewFlowLayout.h */,
-				F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -331,6 +352,8 @@
 				F318C5971E47E58000300755 /* MSEDate.m */,
 				F3216B831E4D383E00677A6C /* MSEEvent.h */,
 				F3216B841E4D383E00677A6C /* MSEEvent.m */,
+				F31BEF311E5B037300B64C43 /* MSEWeather.h */,
+				F31BEF321E5B037300B64C43 /* MSEWeather.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -482,9 +505,11 @@
 				F31D4D191E4AEA8300065C34 /* MSEAgendaEventTableViewCell.m in Sources */,
 				F31D4D141E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.m in Sources */,
 				F32C25591E42B6F5006F8C77 /* ViewController.m in Sources */,
+				F31BEF361E5B03FA00B64C43 /* MSEWeatherStore.m in Sources */,
 				F31233BA1E5AC5F400231974 /* MSEEventStore.m in Sources */,
 				F31233B61E58DC4C00231974 /* UIColor+MSEColor.m in Sources */,
 				F31233A81E5801AC00231974 /* MSECalendarWeekdayView.m in Sources */,
+				F31BEF331E5B037300B64C43 /* MSEWeather.m in Sources */,
 				F32C25871E42B719006F8C77 /* MSECalendarUtils.m in Sources */,
 				F318C5951E47E57600300755 /* MSEWeek.m in Sources */,
 				F318C5981E47E58000300755 /* MSEDate.m in Sources */,
@@ -493,9 +518,10 @@
 				F32C258C1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m in Sources */,
 				F3216B851E4D383E00677A6C /* MSEEvent.m in Sources */,
 				F32C259E1E430E23006F8C77 /* MSEMonth.m in Sources */,
+				F31BEF2C1E5AF94600B64C43 /* UITableView+MSETableView.m in Sources */,
 				F31233AE1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.m in Sources */,
-				F32C25911E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m in Sources */,
 				F32C25531E42B6F5006F8C77 /* main.m in Sources */,
+				F31BEF301E5B01A700B64C43 /* MSENetworkingClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
