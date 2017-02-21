@@ -11,7 +11,6 @@
 @interface MSENetworkingClient : NSObject
 
 + (instancetype)mainClient;
-
 - (void)queryTenDayForcastWithSuccessBlock:(void (^)(NSDictionary *results))success failureBlock:(void (^)(NSError *error))failure;
 
 @end

@@ -39,24 +39,8 @@
 }
 
 - (void) initWithEvent:(MSEEvent *)event isEndingRow:(BOOL)isEnd {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:event.date];
-    NSInteger hour = [components hour];
-    NSInteger minute = [components minute];
-    
-    NSString *hourString = [NSString stringWithFormat:@"%ld:%02ld %@", hour % 12, (long)minute, hour > 12 ? @"PM" : @"AM"];
-    NSInteger hourLength = event.length/60;
-    NSInteger minuteLength = event.length - hourLength * 60;
-    NSString *durationString = @"";
-    if (hourLength > 0) {
-        durationString = [NSString stringWithFormat:@"%ldh", hourLength];
-    }
-    if (minuteLength > 0) {
-        durationString = [NSString stringWithFormat:@"%@%ldm", durationString, minuteLength];
-    }
-    
-    [self.timeLabel setText:hourString];
-    [self.durationLabel setText:durationString];
+    [self.timeLabel setText:event.timeString];
+    [self.durationLabel setText:event.lengthString];
     [self.nameLabel setText:event.name];
     UIColor *color;
     switch (event.color) {

@@ -217,38 +217,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MSECalendar/MSEEventStore.m"
-            timestampString = "509340180.282468"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-eventsForDate:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MSECalendar/MSEAgendaEventTableViewCell.m"
-            timestampString = "509280585.838641"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-initWithEvent:isEndingRow:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MSECalendar/MSEWeatherStore.m"
             timestampString = "509282048.57503"
             startingColumnNumber = "9223372036854775807"
@@ -475,6 +443,178 @@
             endingLineNumber = "167"
             landmarkName = "-tableView:viewForHeaderInSection:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MSECalendarTests/MSEEventTest.m"
+            timestampString = "509347850.260419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-testTimeString"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MSEEventTest testTimeString]"
+                  moduleName = "MSECalendarTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eharmon/Projects/applications/MSECalendar/MSECalendarTests/MSEEventTest.m"
+                  timestampString = "509348627.447051"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "2483">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MSEEventTest testTimeString]"
+                  moduleName = "MSECalendarTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eharmon/Projects/applications/MSECalendar/MSECalendarTests/MSEEventTest.m"
+                  timestampString = "509348627.449574"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "4040">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MSEEventTest testTimeString]"
+                  moduleName = "MSECalendarTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eharmon/Projects/applications/MSECalendar/MSECalendarTests/MSEEventTest.m"
+                  timestampString = "509348627.451667"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "4762">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MSEEventTest testTimeString]"
+                  moduleName = "MSECalendarTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eharmon/Projects/applications/MSECalendar/MSECalendarTests/MSEEventTest.m"
+                  timestampString = "509348627.454441"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "4890">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MSECalendar/MSEEventStore.m"
+            timestampString = "509348308.024819"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-eventsForDate:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MSECalendarTests/MSEEventStoreTest.m"
+            timestampString = "509348618.097582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "-testEventsForDate"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MSEEventStoreTest testEventsForDate]"
+                  moduleName = "MSECalendarTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eharmon/Projects/applications/MSECalendar/MSECalendarTests/MSEEventStoreTest.m"
+                  timestampString = "509348627.460362"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "830">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MSEEventStoreTest testEventsForDate]"
+                  moduleName = "MSECalendarTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eharmon/Projects/applications/MSECalendar/MSECalendarTests/MSEEventStoreTest.m"
+                  timestampString = "509348627.462401"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "2375">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MSEEventStoreTest testEventsForDate]"
+                  moduleName = "MSECalendarTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eharmon/Projects/applications/MSECalendar/MSECalendarTests/MSEEventStoreTest.m"
+                  timestampString = "509348627.464591"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "3082">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MSEEventStoreTest testEventsForDate]"
+                  moduleName = "MSECalendarTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eharmon/Projects/applications/MSECalendar/MSECalendarTests/MSEEventStoreTest.m"
+                  timestampString = "509348627.466686"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "3204">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

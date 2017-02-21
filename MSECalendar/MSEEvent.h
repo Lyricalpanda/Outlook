@@ -23,5 +23,7 @@ typedef NS_ENUM(NSInteger, MSEEventColor) {
 @property (nonatomic) MSEEventColor color;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (NSString *)lengthString;
+- (NSString *)timeString;
 
 @end

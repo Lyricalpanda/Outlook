@@ -14,7 +14,6 @@
 		F31233B61E58DC4C00231974 /* UIColor+MSEColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F31233B51E58DC4C00231974 /* UIColor+MSEColor.m */; };
 		F31233BA1E5AC5F400231974 /* MSEEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F31233B91E5AC5F400231974 /* MSEEventStore.m */; };
 		F31233BC1E5AC82C00231974 /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = F31233BB1E5AC82C00231974 /* events.json */; };
-		F318C5951E47E57600300755 /* MSEWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = F318C5941E47E57600300755 /* MSEWeek.m */; };
 		F318C5981E47E58000300755 /* MSEDate.m in Sources */ = {isa = PBXBuildFile; fileRef = F318C5971E47E58000300755 /* MSEDate.m */; };
 		F31BEF2C1E5AF94600B64C43 /* UITableView+MSETableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF2B1E5AF94600B64C43 /* UITableView+MSETableView.m */; };
 		F31BEF301E5B01A700B64C43 /* MSENetworkingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF2F1E5B01A700B64C43 /* MSENetworkingClient.m */; };
@@ -22,6 +21,12 @@
 		F31BEF361E5B03FA00B64C43 /* MSEWeatherStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF351E5B03FA00B64C43 /* MSEWeatherStore.m */; };
 		F31BEF391E5B1C8B00B64C43 /* UICollectionView+MSECalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF381E5B1C8B00B64C43 /* UICollectionView+MSECalendar.m */; };
 		F31BEF3C1E5BAC6000B64C43 /* MSEDateStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF3B1E5BAC6000B64C43 /* MSEDateStore.m */; };
+		F31BEF3E1E5BFA0B00B64C43 /* MSEDateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF3D1E5BFA0B00B64C43 /* MSEDateTest.m */; };
+		F31BEF401E5BFA1700B64C43 /* MSEEventTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF3F1E5BFA1700B64C43 /* MSEEventTest.m */; };
+		F31BEF421E5BFA2300B64C43 /* MSEWeatherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF411E5BFA2300B64C43 /* MSEWeatherTest.m */; };
+		F31BEF441E5BFA3400B64C43 /* MSECalendarUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF431E5BFA3400B64C43 /* MSECalendarUtilTest.m */; };
+		F31BEF461E5BFA4A00B64C43 /* MSEDateStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF451E5BFA4A00B64C43 /* MSEDateStoreTest.m */; };
+		F31BEF4A1E5BFA6000B64C43 /* MSEEventStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF491E5BFA6000B64C43 /* MSEEventStoreTest.m */; };
 		F31D4CBD1E499EF100065C34 /* MSECalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D4CBC1E499EF100065C34 /* MSECalendarView.m */; };
 		F31D4CC01E49A07300065C34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31D4CBF1E49A07300065C34 /* UIKit.framework */; };
 		F31D4CC41E49BE7900065C34 /* MSEAgendaView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D4CC31E49BE7900065C34 /* MSEAgendaView.m */; };
@@ -76,8 +81,6 @@
 		F31233B81E5AC5F400231974 /* MSEEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEEventStore.h; sourceTree = "<group>"; };
 		F31233B91E5AC5F400231974 /* MSEEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEEventStore.m; sourceTree = "<group>"; };
 		F31233BB1E5AC82C00231974 /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
-		F318C5931E47E57600300755 /* MSEWeek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEWeek.h; sourceTree = "<group>"; };
-		F318C5941E47E57600300755 /* MSEWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEWeek.m; sourceTree = "<group>"; };
 		F318C5961E47E58000300755 /* MSEDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEDate.h; sourceTree = "<group>"; };
 		F318C5971E47E58000300755 /* MSEDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEDate.m; sourceTree = "<group>"; };
 		F31BEF2A1E5AF94600B64C43 /* UITableView+MSETableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+MSETableView.h"; sourceTree = "<group>"; };
@@ -92,6 +95,12 @@
 		F31BEF381E5B1C8B00B64C43 /* UICollectionView+MSECalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+MSECalendar.m"; sourceTree = "<group>"; };
 		F31BEF3A1E5BAC6000B64C43 /* MSEDateStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEDateStore.h; sourceTree = "<group>"; };
 		F31BEF3B1E5BAC6000B64C43 /* MSEDateStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEDateStore.m; sourceTree = "<group>"; };
+		F31BEF3D1E5BFA0B00B64C43 /* MSEDateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEDateTest.m; sourceTree = "<group>"; };
+		F31BEF3F1E5BFA1700B64C43 /* MSEEventTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEEventTest.m; sourceTree = "<group>"; };
+		F31BEF411E5BFA2300B64C43 /* MSEWeatherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEWeatherTest.m; sourceTree = "<group>"; };
+		F31BEF431E5BFA3400B64C43 /* MSECalendarUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarUtilTest.m; sourceTree = "<group>"; };
+		F31BEF451E5BFA4A00B64C43 /* MSEDateStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEDateStoreTest.m; sourceTree = "<group>"; };
+		F31BEF491E5BFA6000B64C43 /* MSEEventStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEEventStoreTest.m; sourceTree = "<group>"; };
 		F31D4CBB1E499EF100065C34 /* MSECalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarView.h; sourceTree = "<group>"; };
 		F31D4CBC1E499EF100065C34 /* MSECalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarView.m; sourceTree = "<group>"; };
 		F31D4CBF1E49A07300065C34 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -300,6 +309,12 @@
 			children = (
 				F32C256B1E42B6F6006F8C77 /* MSECalendarTests.m */,
 				F32C256D1E42B6F6006F8C77 /* Info.plist */,
+				F31BEF3D1E5BFA0B00B64C43 /* MSEDateTest.m */,
+				F31BEF3F1E5BFA1700B64C43 /* MSEEventTest.m */,
+				F31BEF411E5BFA2300B64C43 /* MSEWeatherTest.m */,
+				F31BEF431E5BFA3400B64C43 /* MSECalendarUtilTest.m */,
+				F31BEF451E5BFA4A00B64C43 /* MSEDateStoreTest.m */,
+				F31BEF491E5BFA6000B64C43 /* MSEEventStoreTest.m */,
 			);
 			path = MSECalendarTests;
 			sourceTree = "<group>";
@@ -341,8 +356,6 @@
 		F32C259B1E430E15006F8C77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F318C5931E47E57600300755 /* MSEWeek.h */,
-				F318C5941E47E57600300755 /* MSEWeek.m */,
 				F318C5961E47E58000300755 /* MSEDate.h */,
 				F318C5971E47E58000300755 /* MSEDate.m */,
 				F3216B831E4D383E00677A6C /* MSEEvent.h */,
@@ -506,7 +519,6 @@
 				F31233A81E5801AC00231974 /* MSECalendarWeekdayView.m in Sources */,
 				F31BEF331E5B037300B64C43 /* MSEWeather.m in Sources */,
 				F32C25871E42B719006F8C77 /* MSECalendarUtils.m in Sources */,
-				F318C5951E47E57600300755 /* MSEWeek.m in Sources */,
 				F31BEF3C1E5BAC6000B64C43 /* MSEDateStore.m in Sources */,
 				F318C5981E47E58000300755 /* MSEDate.m in Sources */,
 				F32C25561E42B6F5006F8C77 /* AppDelegate.m in Sources */,
@@ -525,7 +537,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31BEF421E5BFA2300B64C43 /* MSEWeatherTest.m in Sources */,
+				F31BEF461E5BFA4A00B64C43 /* MSEDateStoreTest.m in Sources */,
+				F31BEF4A1E5BFA6000B64C43 /* MSEEventStoreTest.m in Sources */,
 				F32C256C1E42B6F6006F8C77 /* MSECalendarTests.m in Sources */,
+				F31BEF3E1E5BFA0B00B64C43 /* MSEDateTest.m in Sources */,
+				F31BEF441E5BFA3400B64C43 /* MSECalendarUtilTest.m in Sources */,
+				F31BEF401E5BFA1700B64C43 /* MSEEventTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
