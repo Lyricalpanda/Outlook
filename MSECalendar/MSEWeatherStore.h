@@ -11,8 +11,8 @@
 
 @interface MSEWeatherStore : NSObject
 
-+ (instancetype) mainstore;
++ (instancetype)mainstore;
 
-- (void) fetchTenDayForcastWithSuccessBlock:(void (^)(NSArray<MSEWeather *> *forcast))success failureBlock:(void (^)(NSError *error))failure;
+- (void)fetchTenDayForcastWithSuccessBlock:(void (^)(NSArray<MSEWeather *> *forcast))success failureBlock:(void (^)(NSError *error))failure;
 
 @end

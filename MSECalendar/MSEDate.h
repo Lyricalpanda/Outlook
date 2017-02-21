@@ -18,7 +18,7 @@
 @property (nonatomic) NSInteger month;
 @property (nonatomic) NSInteger year;
 
-- (instancetype) initWithEvents:(NSArray *)events andDate:(NSDate *)date;
+- (instancetype)initWithEvents:(NSArray *)events andDate:(NSDate *)date;
 - (NSString *)monthAbbreviation;
 - (NSString *)monthName;
 - (NSString *)toString;

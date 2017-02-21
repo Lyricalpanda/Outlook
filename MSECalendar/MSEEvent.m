@@ -11,7 +11,7 @@
 
 @implementation MSEEvent
 
-- (instancetype) initWithDictionary:(NSDictionary *)dictionary {
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
         self.name = [dictionary objectForKey:@"name"];

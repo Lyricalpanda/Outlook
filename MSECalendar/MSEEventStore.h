@@ -10,7 +10,7 @@
 
 @interface MSEEventStore : NSObject
 
-+ (instancetype) mainStore;
-- (NSArray *) eventsForDate:(NSDate *)date;
++ (instancetype)mainStore;
+- (NSArray *)eventsForDate:(NSDate *)date;
 
 @end

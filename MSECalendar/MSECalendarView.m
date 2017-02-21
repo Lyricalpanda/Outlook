@@ -26,8 +26,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
 @property (nonatomic, strong) MSEDate *selectedDate;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, assign) CGFloat cellHeight;
-
+@property (nonatomic) CGFloat cellHeight;
 @property (nonatomic) BOOL isScrolling;
 
 @end
@@ -42,14 +41,14 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
     return self;
 }
 
-- (void) initCalendarView {
+- (void)initCalendarView {
     self.weeks = [@[] mutableCopy];
     self.utils = [MSECalendarUtils new];
     [self setBackgroundColor:[UIColor whiteColor]];
     [self initCollectionView];
 }
 
-- (void) initCollectionView{
+- (void)initCollectionView {
     UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.minimumLineSpacing = 0;
@@ -66,7 +65,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
     [self addSubview:self.collectionView];
 }
 
-- (void) layoutSubviews {
+- (void)layoutSubviews {
     [super layoutSubviews];
     [self.collectionView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     static dispatch_once_t onceToken;
@@ -75,7 +74,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
     });
 }
 
-- (void) initWithNumberOfPreviousWeeks:(NSInteger)previousWeeks futureWeeks:(NSInteger)futureWeeks {
+- (void)initWithNumberOfPreviousWeeks:(NSInteger)previousWeeks futureWeeks:(NSInteger)futureWeeks {
     __weak typeof(self) weakSelf = self;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -105,11 +104,11 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
     [mseCell initWithDate:weekDay];
 }
 
-- (void) selectedDate:(MSEDate *)date {
+- (void)selectedDate:(MSEDate *)date {
     [self selectedDate:date shouldScroll:YES scrollPosition:UICollectionViewScrollPositionTop];
 }
 
-- (void) selectedDate:(MSEDate *)date shouldScroll:(BOOL)isScrolling scrollPosition:(UICollectionViewScrollPosition) position {
+- (void)selectedDate:(MSEDate *)date shouldScroll:(BOOL)isScrolling scrollPosition:(UICollectionViewScrollPosition) position {
     if ([self.selectedDate.date isEqualToDate:date.date]) {
         return;
     }
@@ -158,7 +157,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
 }
 
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell;
     
     if (indexPath.row == self.selectedIndexPath.row && indexPath.section == self.selectedIndexPath.section) {
@@ -185,7 +184,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
     }
 }
 
-- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (!decelerate) {
         self.isScrolling = NO;
         if ([self.delegate respondsToSelector:@selector(calendarFinishedScrolling)]) {
@@ -194,7 +193,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
     }
 }
 
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     self.isScrolling = NO;
     if ([self.delegate respondsToSelector:@selector(calendarFinishedScrolling)]) {
         [self.delegate calendarFinishedScrolling];

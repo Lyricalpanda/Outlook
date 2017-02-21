@@ -11,7 +11,7 @@
 
 @interface MSEDateStore : NSObject
 
-+ (instancetype) mainStore;
++ (instancetype)mainStore;
 - (NSArray *)weeklyDatesFor:(NSInteger)numberOfPreviousWeeks to:(NSInteger)numberOfFutureWeeks;
 - (MSEDate *)dateForDate:(NSDate *)date;
 - (MSEDate *)dateByAddingDays:(NSInteger)days to:(MSEDate *)date;

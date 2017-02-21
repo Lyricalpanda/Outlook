@@ -14,6 +14,6 @@
 @property (nonatomic) NSInteger low;
 @property (nonatomic) NSString *imageURL;
 
-- (instancetype) initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

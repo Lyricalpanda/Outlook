@@ -31,7 +31,7 @@
     [self.borderView setBackgroundColor:[UIColor mseSeperatorColor]];
 }
 
-- (void) initWithDate:(MSEDate *)date {
+- (void)initWithDate:(MSEDate *)date {
     NSInteger day = date.day;
     NSInteger month = date.month;
     if (month % 2 == 0) {

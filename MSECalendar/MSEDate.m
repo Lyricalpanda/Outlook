@@ -11,7 +11,7 @@
 
 @implementation MSEDate
 
-- (instancetype) initWithEvents:(NSArray *)events andDate:(NSDate *)date {
+- (instancetype)initWithEvents:(NSArray *)events andDate:(NSDate *)date {
     self = [super init];
     if (self) {
         _date = date;
@@ -32,8 +32,6 @@
 }
 
 - (NSString *)toString {
-    NSLog(@"Date: %@", self.date);
-    NSLog(@"Date2 : %@", [MSECalendarUtils stringForDate:self.date] );
     return [MSECalendarUtils stringForDate:self.date];
 }
 

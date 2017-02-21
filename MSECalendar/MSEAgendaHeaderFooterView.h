@@ -15,5 +15,5 @@
 @property (nonatomic, weak) IBOutlet UILabel *dateLabel;
 
 - (void)initWithDate:(MSEDate *)date weather:(MSEWeather *)weather;
-- (void)readOut;
+
 @end

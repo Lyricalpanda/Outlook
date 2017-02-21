@@ -19,7 +19,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    [self.seperatorView setBackgroundColor:[UIColor mseSeperatorColor]];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -33,8 +33,7 @@
 
 - (void) drawRect:(CGRect)rect {
     [super drawRect:rect];
-    [self.seperatorView setBackgroundColor:[UIColor mseSeperatorColor]];
-    [self.seperatorView setFrame:CGRectMake(0, rect.size.height-1, rect.size.width, 1)];
+    [self.seperatorView setFrame:CGRectMake(0, self.frame.size.height-1, self.frame.size.width, 1)];
 }
 
 @end

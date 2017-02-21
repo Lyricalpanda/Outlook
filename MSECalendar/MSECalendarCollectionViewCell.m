@@ -24,7 +24,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self.eventDotView setBackgroundColor:[UIColor mseSeperatorColor]];
+    [self.eventDotView setBackgroundColor:[UIColor mseLightGrayColor]];
     self.eventDotView.layer.cornerRadius = self.eventDotView.frame.size.height/2;
     [self.eventDotView setHidden:YES];
 }
@@ -35,7 +35,7 @@
     [self.yearLabel setText:@""];
 }
 
-- (void) initWithDate:(MSEDate *)date {
+- (void)initWithDate:(MSEDate *)date {
     [super initWithDate:date];
     if ([[date events] count] > 0) {
         [self.eventDotView setHidden:NO];

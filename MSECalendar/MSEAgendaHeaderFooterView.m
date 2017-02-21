@@ -36,12 +36,7 @@
     [self prepareForReuse];
 }
 
-- (void)readOut {
-    NSLog(@"%@", self.highLabel.text);
-    NSLog(@"%@", self.lowLabel.text);
-}
-
-- (void) drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake(0, rect.size.height-1, rect.size.width, 1)];
     [borderView setBackgroundColor:[UIColor mseSeperatorColor]];

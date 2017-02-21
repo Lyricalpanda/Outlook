@@ -15,7 +15,7 @@ static MSEDateStore *mainstore;
 
 @implementation MSEDateStore
 
-+ (instancetype) mainStore {
++ (instancetype)mainStore {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         mainstore = [MSEDateStore new];

@@ -26,4 +26,5 @@
 
 - (void)initWithNumberOfPreviousWeeks:(NSInteger)previousWeeks futureWeeks:(NSInteger)futureWeeks;
 - (void)selectedDate:(MSEDate *)date;
+
 @end

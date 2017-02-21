@@ -14,7 +14,7 @@ static MSEWeatherStore *mainstore;
 
 @implementation MSEWeatherStore
 
-+ (instancetype) mainstore {
++ (instancetype)mainstore {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         mainstore = [MSEWeatherStore new];
@@ -23,7 +23,7 @@ static MSEWeatherStore *mainstore;
     return mainstore;
 }
 
-- (void) fetchTenDayForcastWithSuccessBlock:(void (^)(NSArray<MSEWeather *> *forcast))success failureBlock:(void (^)(NSError *error))failure{
+- (void)fetchTenDayForcastWithSuccessBlock:(void (^)(NSArray<MSEWeather *> *forcast))success failureBlock:(void (^)(NSError *error))failure{
     [[MSENetworkingClient mainClient] queryTenDayForcastWithSuccessBlock:^(NSDictionary *results) {
         NSMutableArray * weatherArray = [@[] mutableCopy];
         NSDictionary *forecast = [results objectForKey:@"forecast"];

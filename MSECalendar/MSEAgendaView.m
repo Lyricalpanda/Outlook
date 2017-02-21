@@ -20,6 +20,7 @@
 
 @interface MSEAgendaView()
 
+@property (nonatomic, strong) UIView *shadowView;
 @property (nonatomic, strong) NSMutableDictionary *weather;
 @property (nonatomic, strong) NSMutableDictionary *rows;
 @property (nonatomic, strong) NSMutableArray *events;
@@ -45,11 +46,25 @@
 
 - (void)initAgendaView {
     [self initializeTableView];
+    [self initializeShadowView];
     [self setBackgroundColor:[UIColor orangeColor]];
     self.firstVisibleIndex = 0;
     self.utils = [MSECalendarUtils new];
     self.rows = [@{} mutableCopy];
     self.weather = [@{} mutableCopy];
+}
+
+- (void)initializeShadowView {
+    self.shadowView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 2)];
+    [self.shadowView setBackgroundColor:[UIColor blackColor]];
+    
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    
+    gradient.frame = self.shadowView.bounds;
+    gradient.colors = @[(id)[UIColor blackColor].CGColor, (id)[UIColor whiteColor].CGColor];
+    
+    [self.shadowView.layer insertSublayer:gradient atIndex:0];
+    [self addSubview:self.shadowView];
 }
 
 - (void)initializeTableView {
@@ -69,11 +84,11 @@
     [self.tableView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 
-- (void) scrollAgendaToDate:(MSEDate *)date {
+- (void)scrollAgendaToDate:(MSEDate *)date {
     NSUInteger todaySection = [MSECalendarUtils daysBetweenDate:self.firstDate andDate:date.date];
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:todaySection] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
-- (void) initWithNumberOfPreviousWeeks:(NSInteger)previousWeeks futureWeeks:(NSInteger)futureWeeks {
+- (void)initWithNumberOfPreviousWeeks:(NSInteger)previousWeeks futureWeeks:(NSInteger)futureWeeks {
     NSDate *currentWeek = [MSECalendarUtils firstDayOfWeekFromDate:[NSDate date]];
     self.firstDate = [MSECalendarUtils addDays:-1*7*previousWeeks toDate:currentWeek];
     self.lastDate = [MSECalendarUtils addDays:1*7*futureWeeks toDate:currentWeek];
@@ -151,7 +166,6 @@
     NSDate *date = [MSECalendarUtils addDays:section toDate:self.firstDate];
     MSEDate *mseDate = [[MSEDateStore mainStore] dateForDate:date];
     [view initWithDate:mseDate weather:[self.weather objectForKey:[NSNumber numberWithInteger:section]]];
-    [view readOut];
     return view;
 }
 
@@ -195,7 +209,7 @@
     }
 }
 
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     self.isScrolling = NO;
     if ([self.delegate respondsToSelector:@selector(agendaFinishedScrolling)]) {
         [self.delegate agendaFinishedScrolling];

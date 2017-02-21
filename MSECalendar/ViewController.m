@@ -9,14 +9,13 @@
 #import "UIColor+MSEColor.h"
 
 #import "ViewController.h"
-#import "MSECalendarUtils.h"
 #import "MSECalendarCollectionViewCell.h"
 #import "MSECalendarSelectedCollectionViewCell.h"
 #import "MSECalendarView.h"
 #import "MSEAgendaView.h"
-#import "MSECalendarUtils.h"
 #import "MSECalendarWeekdayView.h"
 #import "MSEEventStore.h"
+#import "MSEDate.h"
 
 NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
@@ -24,10 +23,6 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *agendaHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *agendaTopConstraint;
-
-@property (nonatomic, strong) MSECalendarUtils *utils;
-@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, weak) IBOutlet MSECalendarView *calendarViewModel;
 @property (nonatomic, weak) IBOutlet MSEAgendaView *agendaViewModel;
@@ -41,15 +36,11 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
 @implementation ViewController
 
-- (void)dateScrolled:(NSString *)date {
-    [self.calendarViewModel selectedDate:date];
-}
-
-- (void) agendaFinishedScrolling {
+- (void)agendaFinishedScrolling {
     self.isScrolling = NO;
 }
 
-- (void) calendarFinishedScrolling {
+- (void)calendarFinishedScrolling {
     self.isScrolling = NO;
 }
 
@@ -64,13 +55,6 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
                 [UIView animateWithDuration:0.5 animations:^{
                     [self.view layoutIfNeeded];
                 } completion:^(BOOL finished) {
-            //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //                [UIView animateWithDuration:1.0 delay:0 options:0 animations:^{
-            //                    // Your animation code
-            //                } completion:^(BOOL finished) {
-            //                    // Your completion code
-            //                }];
-    //                });
                     if (finished) {
                     self.isCalendarSmall = YES;
                     self.agendaTopConstraint.constant = 0;
@@ -101,8 +85,14 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     }
 }
 
-- (void) calendarSelectedDate:(MSEDate *)date {
+- (void)calendarSelectedDate:(MSEDate *)date {
+    self.title = [date monthName];
     [self.agendaViewModel scrollAgendaToDate:date];
+}
+
+- (void)dateScrolled:(MSEDate *)date {
+    self.title = [date monthName];
+    [self.calendarViewModel selectedDate:date];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -122,8 +112,6 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     [self.agendaViewModel setDelegate:self];
     [self.calendarViewModel setDelegate:self];
     
-    self.utils = [MSECalendarUtils new];
-    
     self.title = @"February";
     
     [self.navigationController.navigationBar setTranslucent:NO];
@@ -135,7 +123,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     self.isAnimating = NO;
 }
 
-- (void) viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.agendaViewModel initWithNumberOfPreviousWeeks:12 futureWeeks:12];
     [self.calendarViewModel initWithNumberOfPreviousWeeks:12 futureWeeks:12];

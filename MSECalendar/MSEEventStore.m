@@ -20,7 +20,7 @@ static MSEEventStore *mainStore;
 
 @implementation MSEEventStore
 
-+ (instancetype) mainStore {
++ (instancetype)mainStore {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         mainStore = [MSEEventStore new];
@@ -30,7 +30,7 @@ static MSEEventStore *mainStore;
     return mainStore;
 }
 
-- (void) initStore {
+- (void)initStore {
     self.eventsArray = [@[] mutableCopy];
 
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"events" ofType:@"json"]];
@@ -43,7 +43,7 @@ static MSEEventStore *mainStore;
     }
 }
 
-- (NSArray *) eventsForDate:(NSDate *)date {
+- (NSArray *)eventsForDate:(NSDate *)date {
     NSDate *nextDay = [MSECalendarUtils addDays:1 toDate:date];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date < %@)", date, nextDay];
         
