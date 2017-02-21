@@ -9,6 +9,7 @@
 #import "MSEAgendaHeaderFooterView.h"
 #import "UIColor+MSEColor.h"
 #import "MSEWeather.h"
+#import "MSEDate.h"
 
 @interface MSEAgendaHeaderFooterView()
 
@@ -21,6 +22,25 @@
 
 @implementation MSEAgendaHeaderFooterView
 
+-(instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self.dateLabel setFont:[UIFont systemFontOfSize:14.0]];
+        [self.contentView setBackgroundColor:[UIColor whiteColor]];
+    }
+    return self;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self prepareForReuse];
+}
+
+- (void)readOut {
+    NSLog(@"%@", self.highLabel.text);
+    NSLog(@"%@", self.lowLabel.text);
+}
+
 - (void) drawRect:(CGRect)rect {
     [super drawRect:rect];
     UIView *borderView = [[UIView alloc] initWithFrame:CGRectMake(0, rect.size.height-1, rect.size.width, 1)];
@@ -29,23 +49,12 @@
 }
 
 - (void)prepareForReuse {
-    [self.weatherImageView setImage:nil];
+    [self.weatherImageView setImage:[UIImage new]];
     [self.highLabel setText:@""];
     [self.lowLabel setText:@""];
 }
 
--(instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self.dateLabel setFont:[UIFont systemFontOfSize:14.0]];
-        [self.contentView setBackgroundColor:[UIColor whiteColor]];
-        [self.highLabel setText:@""];
-        [self.lowLabel setText:@""];
-    }
-    return self;
-}
-
-- (void)initWithDate:(NSString *)date weather:(MSEWeather *)weather {
+- (void)initWithDate:(MSEDate *)date weather:(MSEWeather *)weather {
     __weak typeof(self) weakSelf = self;
     if (weather) {
         self.weather = weather;
@@ -64,7 +73,7 @@
             });
         });
     }
-    [self.dateLabel setText:date];
+    [self.dateLabel setText:[date toString]];
 }
 
 - (void)layoutSubviews {

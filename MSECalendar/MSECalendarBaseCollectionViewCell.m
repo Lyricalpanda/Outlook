@@ -32,8 +32,14 @@
 }
 
 - (void) initWithDate:(MSEDate *)date {
-    MSECalendarUtils *utils = [MSECalendarUtils new];
-    NSInteger day = [utils dayFromDate:[date date]];
+    NSInteger day = date.day;
+    NSInteger month = date.month;
+    if (month % 2 == 0) {
+        [self setBackgroundColor:[UIColor mseLightGrayBackgroundColor]];
+    }
+    else {
+        [self setBackgroundColor:[UIColor whiteColor]];
+    }
 
     [self.dateNumberLabel setText:[NSString stringWithFormat:@"%ld", day]];
 }

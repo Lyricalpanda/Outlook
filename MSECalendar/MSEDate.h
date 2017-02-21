@@ -14,9 +14,13 @@
 
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSArray<MSEEvent *> *events;
+@property (nonatomic) NSInteger day;
+@property (nonatomic) NSInteger month;
+@property (nonatomic) NSInteger year;
 
 - (instancetype) initWithEvents:(NSArray *)events andDate:(NSDate *)date;
-- (NSInteger)dayOfTheMonth;
-
+- (NSString *)monthAbbreviation;
+- (NSString *)monthName;
+- (NSString *)toString;
 
 @end

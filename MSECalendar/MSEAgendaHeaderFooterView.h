@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 @class MSEWeather;
+@class MSEDate;
 
 @interface MSEAgendaHeaderFooterView : UITableViewHeaderFooterView
 
 @property (nonatomic, weak) IBOutlet UILabel *dateLabel;
 
-- (void)initWithDate:(NSString *)date weather:(MSEWeather *)weather;
-
+- (void)initWithDate:(MSEDate *)date weather:(MSEWeather *)weather;
+- (void)readOut;
 @end

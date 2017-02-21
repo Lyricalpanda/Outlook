@@ -16,6 +16,7 @@
 #import "MSEEvent.h"
 #import "MSEDate.h"
 #import "MSEWeatherStore.h"
+#import "MSEDateStore.h"
 
 @interface MSEAgendaView()
 
@@ -38,16 +39,6 @@
     self = [super initWithCoder:aDecoder];
     if (self ) {
         [self initAgendaView];
-        __weak typeof(self) weakSelf = self;
-        [[MSEWeatherStore mainstore] fetchTenDayForcastWithSuccessBlock:^(NSArray<MSEWeather *> *forcast) {
-            NSUInteger todaySection = [weakSelf.utils daysBetweenDate:weakSelf.firstDate andDate:[NSDate date]];
-            for (NSInteger i = 0; i < [forcast count]; i++){
-                [weakSelf.weather setObject:forcast[i] forKey:[NSNumber numberWithInteger:todaySection + i]];
-            }
-            [self.tableView reloadData];
-        } failureBlock:^(NSError *error) {
-            
-        }];
     }
     return self;
 }
@@ -69,7 +60,7 @@
     
     [self.tableView registerNibForCellFromClass:[MSEAgendaEmptyTableViewCell class]];
     [self.tableView registerNibForCellFromClass:[MSEAgendaEventTableViewCell class]];
-    [self.tableView registerNibForHeaderFooterFrom:[MSEAgendaHeaderFooterView class]];
+    [self.tableView registerNibForHeaderFooterFromClass:[MSEAgendaHeaderFooterView class]];
     [self addSubview:self.tableView];
 }
 
@@ -78,40 +69,52 @@
     [self.tableView setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 
-- (void) scrollAgendaToDate:(NSDate *)date {
-    NSUInteger todaySection = [self.utils daysBetweenDate:self.firstDate andDate:date];
+- (void) scrollAgendaToDate:(MSEDate *)date {
+    NSUInteger todaySection = [MSECalendarUtils daysBetweenDate:self.firstDate andDate:date.date];
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:todaySection] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
-
-- (void) loadAgendaFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate{
-    self.firstDate = [fromDate copy];;
-    self.lastDate = [toDate copy];
+- (void) initWithNumberOfPreviousWeeks:(NSInteger)previousWeeks futureWeeks:(NSInteger)futureWeeks {
+    NSDate *currentWeek = [MSECalendarUtils firstDayOfWeekFromDate:[NSDate date]];
+    self.firstDate = [MSECalendarUtils addDays:-1*7*previousWeeks toDate:currentWeek];
+    self.lastDate = [MSECalendarUtils addDays:1*7*futureWeeks toDate:currentWeek];
     
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0), ^{
-        NSUInteger numberOfDays = [self.utils daysBetweenDate:fromDate andDate:toDate];
+        NSUInteger numberOfDays = [MSECalendarUtils daysBetweenDate:weakSelf.firstDate andDate:weakSelf.lastDate];
         for (NSInteger i = 0; i < numberOfDays; i++) {
-            NSDate *date = [self.utils addDays:i toDate:self.firstDate];
+            NSDate *date = [MSECalendarUtils addDays:i toDate:weakSelf.firstDate];
             NSArray *events = [[MSEEventStore mainStore] eventsForDate:date];
             MSEDate *event = [[MSEDate alloc] initWithEvents:events andDate:date];
-            [self.rows setObject:event forKey:[NSNumber numberWithInteger:i]];
+            //only store rows that have events. Otherwise no need to store them.
+            if ([[event events] count] > 0) {
+                [weakSelf.rows setObject:event forKey:[NSNumber numberWithInteger:i]];
+            }
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-            [self scrollAgendaToDate:[NSDate date]];
+            [weakSelf.tableView reloadData];
+            [weakSelf scrollAgendaToDate:[[MSEDateStore mainStore] dateForDate:[NSDate date]]];
         });
     });
     
-//    [self.tableView reloadData];
-//    NSUInteger todaySection = [self.utils daysBetweenDate:self.firstDate andDate:[NSDate date]];
-//    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:todaySection] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    [[MSEWeatherStore mainstore] fetchTenDayForcastWithSuccessBlock:^(NSArray<MSEWeather *> *forcast) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSUInteger todaySection = [MSECalendarUtils daysBetweenDate:weakSelf.firstDate andDate:[NSDate date]];
+            for (NSInteger i = 0; i < [forcast count]; i++){
+                [weakSelf.weather setObject:forcast[i] forKey:[NSNumber numberWithInteger:todaySection + i]];
+            }
+            [weakSelf.tableView reloadData];
+        });
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.utils daysBetweenDate:self.firstDate andDate:self.lastDate];
+    return [MSECalendarUtils daysBetweenDate:self.firstDate andDate:self.lastDate];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     if ([self.rows objectForKey:[NSNumber numberWithInteger:section]]) {
         MSEDate *date = [self.rows objectForKey:[NSNumber numberWithInteger:section]];
         return [[date events] count] > 0 ? [[date events] count] : 1;
@@ -119,20 +122,6 @@
     else {
         return 1;
     }
-}
-
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [self.rows removeObjectForKey:[NSNumber numberWithInteger:indexPath.section]];
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    MSEAgendaEmptyTableViewCell *emptyCell = (MSEAgendaEmptyTableViewCell *)cell;
-//    if (indexPath.row == 0) {
-//        [emptyCell isEndingCell:NO];
-//    }
-//    else {
-//        [emptyCell isEndingCell:YES];
-//    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -159,14 +148,10 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     MSEAgendaHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([MSEAgendaHeaderFooterView class])];
-    NSDate *date = [self.utils addDays:section toDate:self.firstDate];
-    if ([self.weather objectForKey:[NSNumber numberWithInteger:section]]) {
-        MSEWeather *weather = [self.weather objectForKey:[NSNumber numberWithInteger:section]];
-        [view initWithDate:[self.utils stringForDate:date] weather:weather];
-    }
-    else {
-        [view initWithDate:[self.utils stringForDate:date] weather:nil];
-    }
+    NSDate *date = [MSECalendarUtils addDays:section toDate:self.firstDate];
+    MSEDate *mseDate = [[MSEDateStore mainStore] dateForDate:date];
+    [view initWithDate:mseDate weather:[self.weather objectForKey:[NSNumber numberWithInteger:section]]];
+    [view readOut];
     return view;
 }
 
@@ -187,7 +172,6 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     self.isScrolling = YES;
-    NSLog(@"Begin dragging");
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -199,7 +183,7 @@
             [self.delegate agendaScrolled];
         }
         if ([self.delegate respondsToSelector:@selector(dateScrolled:)]) {
-            [self.delegate dateScrolled:[self.utils addDays:section toDate:self.firstDate]];
+            [self.delegate dateScrolled:[[MSEDateStore mainStore] dateForDate:[MSECalendarUtils addDays:section toDate:self.firstDate]]];
         }
     }
 }

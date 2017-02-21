@@ -13,9 +13,8 @@
 - (void)registerNibForCellFromClass:(Class)class {
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(class) bundle:nil] forCellReuseIdentifier:NSStringFromClass(class)];
 }
-- (void)registerNibForHeaderFooterFrom:(Class)class {
+- (void)registerNibForHeaderFooterFromClass:(Class)class {
     [self registerNib:[UINib nibWithNibName:NSStringFromClass(class) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass(class)];
 }
-
 
 @end

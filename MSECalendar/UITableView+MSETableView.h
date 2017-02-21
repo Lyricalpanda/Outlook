@@ -11,5 +11,6 @@
 @interface UITableView (MSETableView)
 
 - (void)registerNibForCellFromClass:(Class)class;
-- (void)registerNibForHeaderFooterFrom:(Class)class;
+- (void)registerNibForHeaderFooterFromClass:(Class)class;
+
 @end

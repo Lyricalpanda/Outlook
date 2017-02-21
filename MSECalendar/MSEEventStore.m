@@ -44,8 +44,7 @@ static MSEEventStore *mainStore;
 }
 
 - (NSArray *) eventsForDate:(NSDate *)date {
-    MSECalendarUtils *utils = [MSECalendarUtils new];
-    NSDate *nextDay = [utils addDays:1 toDate:date];
+    NSDate *nextDay = [MSECalendarUtils addDays:1 toDate:date];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date < %@)", date, nextDay];
         
     NSMutableArray *results = [[NSArray arrayWithArray:self.eventsArray] mutableCopy];

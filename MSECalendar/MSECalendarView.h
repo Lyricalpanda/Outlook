@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+@class MSEDate;
 
 @protocol MSECalendarProtocol <NSObject>
 
 @optional
 
-- (void) calendarSelectedDate:(NSDate *)date;
-- (void) calendarScrolled;
-- (void) calendarFinishedScrolling;
+- (void)calendarSelectedDate:(MSEDate *)date;
+- (void)calendarScrolled;
+- (void)calendarFinishedScrolling;
 
 @end
 
@@ -23,6 +24,6 @@
 
 @property (nonatomic, weak) id<MSECalendarProtocol> delegate;
 
-- (void) initWithStartingDate:(NSDate *)date;
-- (void) selectedDate:(NSDate *)date;
+- (void)initWithNumberOfPreviousWeeks:(NSInteger)previousWeeks futureWeeks:(NSInteger)futureWeeks;
+- (void)selectedDate:(MSEDate *)date;
 @end

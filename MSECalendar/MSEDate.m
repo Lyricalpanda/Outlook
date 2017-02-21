@@ -16,8 +16,25 @@
     if (self) {
         _date = date;
         _events = events;
+        _year = [MSECalendarUtils yearFromDate:date];
+        _month = [MSECalendarUtils monthFromDate:date];
+        _day = [MSECalendarUtils dayFromDate:date];
     }
     return self;
+}
+
+- (NSString *)monthAbbreviation {
+    return [MSECalendarUtils monthAbbreviationFromMonth:self.month];
+}
+
+- (NSString *)monthName {
+    return [MSECalendarUtils monthName:self.month];
+}
+
+- (NSString *)toString {
+    NSLog(@"Date: %@", self.date);
+    NSLog(@"Date2 : %@", [MSECalendarUtils stringForDate:self.date] );
+    return [MSECalendarUtils stringForDate:self.date];
 }
 
 @end

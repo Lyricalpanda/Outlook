@@ -44,25 +44,13 @@
         [self.eventDotView setHidden:YES];
     }
     
-    MSECalendarUtils *utils = [MSECalendarUtils new];
-    NSInteger day = [utils dayFromDate:[date date]];
-    NSInteger month = [utils monthFromDate:[date date]];
-
-    if (day == 1) {
-        [self.monthLabel setText:[utils monthAbbreviationFromMonth:month]];
+    if (date.day == 1) {
+        [self.monthLabel setText:[date monthAbbreviation]];
     }
     else {
         [self.monthLabel setText:@""];
     }
     
 }
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-    }
-    return self;
-}
-
 
 @end

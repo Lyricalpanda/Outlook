@@ -14,7 +14,6 @@
 #import "MSECalendarSelectedCollectionViewCell.h"
 #import "MSECalendarView.h"
 #import "MSEAgendaView.h"
-#import "MSEMonth.h"
 #import "MSECalendarUtils.h"
 #import "MSECalendarWeekdayView.h"
 #import "MSEEventStore.h"
@@ -29,8 +28,6 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 @property (nonatomic, strong) MSECalendarUtils *utils;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-
-@property (nonatomic, strong) NSMutableArray *weeks;
 
 @property (nonatomic, weak) IBOutlet MSECalendarView *calendarViewModel;
 @property (nonatomic, weak) IBOutlet MSEAgendaView *agendaViewModel;
@@ -104,7 +101,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     }
 }
 
-- (void) calendarSelectedDate:(NSDate *)date {
+- (void) calendarSelectedDate:(MSEDate *)date {
     [self.agendaViewModel scrollAgendaToDate:date];
 }
 
@@ -122,7 +119,6 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     [super viewDidLoad];
     [MSEEventStore mainStore];
     self.isAnimating = YES;
-    self.weeks = [@[] mutableCopy];
     [self.agendaViewModel setDelegate:self];
     [self.calendarViewModel setDelegate:self];
     
@@ -132,8 +128,6 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     
     [self.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController.navigationBar setTintColor:[UIColor mseBlueColor]];
-    
-    [self initializeWeeksArray];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -141,27 +135,10 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     self.isAnimating = NO;
 }
 
-- (void)initializeWeeksArray {
-    NSDate *currentWeek = [self.utils firstDayOfWeekFromDate:[NSDate date]];
-    NSDate *previousWeek = [currentWeek copy];
-    NSDate *nextWeek = [currentWeek copy];
-    [self.weeks addObject:currentWeek];
-    for (int i = 0; i < 5; i++) {
-        previousWeek = [self.utils previousWeekFromDate:previousWeek];
-        [self.weeks insertObject:previousWeek atIndex:0];
-    }
-    for (int i = 0; i < 5; i++) {
-        nextWeek = [self.utils nextWeekFromDate:nextWeek];
-        [self.weeks addObject:nextWeek];
-    }
-}
-
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSDate *firstDate = [self.weeks objectAtIndex:0];
-    NSDate *lastDate = [self.utils addDays:6 toDate:[self.weeks lastObject]];
-    [self.agendaViewModel loadAgendaFromDate:firstDate toDate:lastDate];
-    [self.calendarViewModel initWithStartingDate:[NSDate date]];
+    [self.agendaViewModel initWithNumberOfPreviousWeeks:12 futureWeeks:12];
+    [self.calendarViewModel initWithNumberOfPreviousWeeks:12 futureWeeks:12];
 }
 
 

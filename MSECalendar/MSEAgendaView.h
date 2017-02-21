@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+@class MSEDate;
 
 @protocol MSEAgendaProtocol <NSObject>
 
@@ -15,7 +16,7 @@
 
 - (void) agendaScrolled;
 - (void) agendaFinishedScrolling;
-- (void) dateScrolled:(NSDate *)date;
+- (void) dateScrolled:(MSEDate *)date;
 - (void) decrementedDate;
 - (void) incrementedDate;
 
@@ -26,7 +27,7 @@
 @property (nonatomic, weak) id<MSEAgendaProtocol> delegate;
 @property (nonatomic, strong) UITableView *tableView;
 
-- (void) loadAgendaFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
-- (void) scrollAgendaToDate:(NSDate *)date;
+- (void) initWithNumberOfPreviousWeeks:(NSInteger)previousWeeks futureWeeks:(NSInteger)futureWeeks;
+- (void) scrollAgendaToDate:(MSEDate *)date;
 
 @end
