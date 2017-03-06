@@ -68,7 +68,6 @@ static NSCalendar *calendar;
 
 + (NSInteger)dayFromDate:(NSDate *)date {
     return [[calendar components: NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date] day];
-
 }
 
 + (NSInteger)monthFromDate:(NSDate *)date {
@@ -114,8 +113,8 @@ static NSCalendar *calendar;
     return [difference day];
 }
 
-+ (NSInteger)minutesBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2 {
-    return fabs([date1 timeIntervalSinceDate:date2]) / 60;
++ (NSInteger)minutesBetweenDate:(NSDate *)fromDate andDate:(NSDate *)toDate {
+    return fabs([fromDate timeIntervalSinceDate:toDate]) / 60;
 }
 
 @end

@@ -70,6 +70,7 @@
     XCTAssert([initDate.events count] == 2);
     XCTAssert([initDate.monthName isEqualToString:@"February"]);
     XCTAssert([initDate.monthAbbreviation isEqualToString:@"Feb"]);
+    XCTAssert([[initDate toString] isEqualToString:@"SUNDAY FEBRUARY 19"]);
     XCTAssert(initDate.month == 2);
     XCTAssert(initDate.day == 19);
     XCTAssert(initDate.year == 2017);
@@ -81,6 +82,7 @@
     MSEDate *initDate = [[MSEDate alloc] initWithEvents:nil andDate:formatDate];
     XCTAssert([initDate.monthName isEqualToString:@"March"]);
     XCTAssert([initDate.monthAbbreviation isEqualToString:@"Mar"]);
+    XCTAssert([[initDate toString] isEqualToString:@"THURSDAY MARCH 9"]);
     XCTAssert(initDate.month == 3);
     XCTAssert(initDate.day == 9);
     XCTAssert(initDate.year == 2017);
@@ -89,6 +91,7 @@
     initDate = [[MSEDate alloc] initWithEvents:nil andDate:formatDate];
     XCTAssert([initDate.monthName isEqualToString:@"December"]);
     XCTAssert([initDate.monthAbbreviation isEqualToString:@"Dec"]);
+    XCTAssert([[initDate toString] isEqualToString:@"TUESDAY DECEMBER 12"]);
     XCTAssert(initDate.month == 12);
     XCTAssert(initDate.day == 12);
     XCTAssert(initDate.year == 2017);

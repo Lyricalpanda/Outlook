@@ -24,8 +24,8 @@
 + (NSInteger)monthFromDate:(NSDate *)date;
 + (NSInteger)yearFromDate:(NSDate *)date;
 
-+ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
++ (NSInteger)daysBetweenDate:(NSDate*)fromDate andDate:(NSDate*)toDate;
 + (NSInteger)weeksBetweenDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
-+ (NSInteger)minutesBetweenDate:(NSDate *)date1 andDate:(NSDate *)date2;
++ (NSInteger)minutesBetweenDate:(NSDate *)fromDate andDate:(NSDate *)toDate;
 
 @end
