@@ -8,7 +8,8 @@
 
 #import "UIColor+MSEColor.h"
 
-#import "ViewController.h"
+#import "MSECalendarUtils.h"
+#import "MSEViewController.h"
 #import "MSECalendarCollectionViewCell.h"
 #import "MSECalendarSelectedCollectionViewCell.h"
 #import "MSECalendarView.h"
@@ -19,13 +20,13 @@
 
 NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
-@interface ViewController () <MSEAgendaProtocol, MSECalendarProtocol>
+@interface MSEViewController () <MSEAgendaProtocol, MSECalendarProtocol>
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *agendaHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *agendaTopConstraint;
 
-@property (nonatomic, weak) IBOutlet MSECalendarView *calendarViewModel;
-@property (nonatomic, weak) IBOutlet MSEAgendaView *agendaViewModel;
+@property (nonatomic, weak) IBOutlet MSECalendarView *calendarView;
+@property (nonatomic, weak) IBOutlet MSEAgendaView *agendaView;
 @property (nonatomic, weak) IBOutlet MSECalendarWeekdayView *weekdayView;
 
 @property (nonatomic, assign) BOOL isAnimating;
@@ -34,13 +35,13 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
 @end
 
-@implementation ViewController
+@implementation MSEViewController
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSInteger cellWidth = self.calendarViewModel.frame.size.width / 7;
+        NSInteger cellWidth = self.calendarView.frame.size.width / 7;
         self.calendarHeightConstraint.constant = cellWidth * 5;
         self.agendaTopConstraint.constant = 0;
     });
@@ -50,10 +51,10 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     [super viewDidLoad];
     [MSEEventStore mainStore];
     self.isAnimating = YES;
-    [self.agendaViewModel setDelegate:self];
-    [self.calendarViewModel setDelegate:self];
+    [self.agendaView setDelegate:self];
+    [self.calendarView setDelegate:self];
     
-    self.title = @"February";
+    self.title = [MSECalendarUtils monthName:[MSECalendarUtils monthFromDate:[NSDate date]]];
     
     [self.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController.navigationBar setTintColor:[UIColor mseBlueColor]];
@@ -66,8 +67,8 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.agendaViewModel initWithNumberOfPreviousWeeks:12 futureWeeks:12];
-    [self.calendarViewModel initWithNumberOfPreviousWeeks:12 futureWeeks:12];
+    [self.agendaView initWithNumberOfPreviousWeeks:12 futureWeeks:12];
+    [self.calendarView initWithNumberOfPreviousWeeks:12 futureWeeks:12];
 }
 
 #pragma mark MSEAgendaViewModel Delegate Methods
@@ -76,7 +77,10 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     self.isScrolling = NO;
 }
 
-- (void) agendaScrolled {
+- (void) agendaScrolled:(MSEDate *)date {
+    self.title = [date monthName];
+    [self.calendarView selectedDate:date];
+
     //If one of the two views are scrolling, then block the GUI. I noticed in the Android Outlook that you can get a weird UX if you scroll both the agenda and calendar at the same time, since they're both trying to manipulate the view. I want to make sure first and foremost we are not scrolling.
     if (!self.isScrolling) {
         self.isScrolling = YES;
@@ -85,7 +89,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
             //Added this since I was getting an animation bug with the constraints firing immediately.
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.view layoutIfNeeded];
-                NSInteger cellWidth = self.calendarViewModel.frame.size.width / 7;
+                NSInteger cellWidth = self.calendarView.frame.size.width / 7;
                 self.agendaTopConstraint.constant = -1 * cellWidth * 3;
                 [UIView animateWithDuration:0.5 animations:^{
                     [self.view layoutIfNeeded];
@@ -102,11 +106,6 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
     }
 }
 
-- (void)dateScrolled:(MSEDate *)date {
-    self.title = [date monthName];
-    [self.calendarViewModel selectedDate:date];
-}
-
 #pragma mark MSECalendarViewModel Delegate Methods
 
 - (void)calendarFinishedScrolling {
@@ -119,7 +118,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
         if (!self.isAnimating && self.isCalendarSmall) {
             [self.view layoutIfNeeded];
             self.agendaTopConstraint.constant = 0;
-            NSInteger cellWidth = self.calendarViewModel.frame.size.width / 7;
+            NSInteger cellWidth = self.calendarView.frame.size.width / 7;
             self.calendarHeightConstraint.constant = cellWidth * 5;
             [UIView animateWithDuration:0.5 animations:^{
                 [self.view layoutIfNeeded];
@@ -133,7 +132,7 @@ NSInteger const NUMBER_OF_WEEKS_TO_HOLD = 7;
 
 - (void)calendarSelectedDate:(MSEDate *)date {
     self.title = [date monthName];
-    [self.agendaViewModel scrollAgendaToDate:date];
+    [self.agendaView scrollAgendaToDate:date];
 }
 
 @end

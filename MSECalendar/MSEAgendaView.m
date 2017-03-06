@@ -88,6 +88,13 @@
     NSUInteger todaySection = [MSECalendarUtils daysBetweenDate:self.firstDate andDate:date.date];
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:todaySection] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
+
+//This method inits the agenda based on how many previous and future weeks. The current implementation
+//only stores days that have an event in a hashmap. Since some days are likely to not have events, this seemed like the most efficient
+//use of space. Any days that do not have an event are not saved and can be dealt with in the tableView methods pretty eaisly.
+//If I had more time I would do something with removing days that belonged to cells that were being dequeued
+//to save more memory.
+
 - (void)initWithNumberOfPreviousWeeks:(NSInteger)previousWeeks futureWeeks:(NSInteger)futureWeeks {
     NSDate *currentWeek = [MSECalendarUtils firstDayOfWeekFromDate:[NSDate date]];
     self.firstDate = [MSECalendarUtils addDays:-1*7*previousWeeks toDate:currentWeek];
@@ -111,12 +118,13 @@
         });
     });
     
+    //While we're generating the Agenda also fetch 10 day forecast and put it on today + next 9 days
     [[MSEWeatherStore mainstore] fetchTenDayForcastWithSuccessBlock:^(NSArray<MSEWeather *> *forcast) {
+        NSUInteger todaySection = [MSECalendarUtils daysBetweenDate:weakSelf.firstDate andDate:[NSDate date]];
+        for (NSInteger i = 0; i < [forcast count]; i++){
+            [weakSelf.weather setObject:forcast[i] forKey:[NSNumber numberWithInteger:todaySection + i]];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSUInteger todaySection = [MSECalendarUtils daysBetweenDate:weakSelf.firstDate andDate:[NSDate date]];
-            for (NSInteger i = 0; i < [forcast count]; i++){
-                [weakSelf.weather setObject:forcast[i] forKey:[NSNumber numberWithInteger:todaySection + i]];
-            }
             [weakSelf.tableView reloadData];
         });
     } failureBlock:^(NSError *error) {
@@ -124,6 +132,8 @@
     }];
 
 }
+
+#pragma mark - UITableView Methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [MSECalendarUtils daysBetweenDate:self.firstDate andDate:self.lastDate];
@@ -193,15 +203,11 @@
     NSArray* sortedIndexPaths = [indexPaths sortedArrayUsingSelector:@selector(compare:)];
     NSInteger section = [(NSIndexPath*)[sortedIndexPaths objectAtIndex:0] section];
     if (self.isScrolling) {
-        if ([self.delegate respondsToSelector:@selector(agendaScrolled)]) {
-            [self.delegate agendaScrolled];
-        }
-        if ([self.delegate respondsToSelector:@selector(dateScrolled:)]) {
-            [self.delegate dateScrolled:[[MSEDateStore mainStore] dateForDate:[MSECalendarUtils addDays:section toDate:self.firstDate]]];
+        if ([self.delegate respondsToSelector:@selector(agendaScrolled:)]) {
+            [self.delegate agendaScrolled:[[MSEDateStore mainStore] dateForDate:[MSECalendarUtils addDays:section toDate:self.firstDate]]];
         }
     }
 }
-
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (!decelerate){

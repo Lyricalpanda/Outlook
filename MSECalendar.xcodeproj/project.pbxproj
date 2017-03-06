@@ -41,7 +41,7 @@
 		F3216B851E4D383E00677A6C /* MSEEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = F3216B841E4D383E00677A6C /* MSEEvent.m */; };
 		F32C25531E42B6F5006F8C77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25521E42B6F5006F8C77 /* main.m */; };
 		F32C25561E42B6F5006F8C77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25551E42B6F5006F8C77 /* AppDelegate.m */; };
-		F32C25591E42B6F5006F8C77 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25581E42B6F5006F8C77 /* ViewController.m */; };
+		F32C25591E42B6F5006F8C77 /* MSEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25581E42B6F5006F8C77 /* MSEViewController.m */; };
 		F32C255C1E42B6F5006F8C77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32C255A1E42B6F5006F8C77 /* Main.storyboard */; };
 		F32C255E1E42B6F5006F8C77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32C255D1E42B6F5006F8C77 /* Assets.xcassets */; };
 		F32C25611E42B6F5006F8C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32C255F1E42B6F5006F8C77 /* LaunchScreen.storyboard */; };
@@ -124,8 +124,8 @@
 		F32C25521E42B6F5006F8C77 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F32C25541E42B6F5006F8C77 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F32C25551E42B6F5006F8C77 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F32C25571E42B6F5006F8C77 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F32C25581E42B6F5006F8C77 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F32C25571E42B6F5006F8C77 /* MSEViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSEViewController.h; sourceTree = "<group>"; };
+		F32C25581E42B6F5006F8C77 /* MSEViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSEViewController.m; sourceTree = "<group>"; };
 		F32C255B1E42B6F5006F8C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F32C255D1E42B6F5006F8C77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F32C25601E42B6F5006F8C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -285,8 +285,8 @@
 				F32C25841E42B705006F8C77 /* Utils */,
 				F32C25541E42B6F5006F8C77 /* AppDelegate.h */,
 				F32C25551E42B6F5006F8C77 /* AppDelegate.m */,
-				F32C25571E42B6F5006F8C77 /* ViewController.h */,
-				F32C25581E42B6F5006F8C77 /* ViewController.m */,
+				F32C25571E42B6F5006F8C77 /* MSEViewController.h */,
+				F32C25581E42B6F5006F8C77 /* MSEViewController.m */,
 				F32C255A1E42B6F5006F8C77 /* Main.storyboard */,
 				F32C255D1E42B6F5006F8C77 /* Assets.xcassets */,
 				F32C255F1E42B6F5006F8C77 /* LaunchScreen.storyboard */,
@@ -512,7 +512,7 @@
 				F31D4CBD1E499EF100065C34 /* MSECalendarView.m in Sources */,
 				F31D4D191E4AEA8300065C34 /* MSEAgendaEventTableViewCell.m in Sources */,
 				F31D4D141E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.m in Sources */,
-				F32C25591E42B6F5006F8C77 /* ViewController.m in Sources */,
+				F32C25591E42B6F5006F8C77 /* MSEViewController.m in Sources */,
 				F31BEF361E5B03FA00B64C43 /* MSEWeatherStore.m in Sources */,
 				F31233BA1E5AC5F400231974 /* MSEEventStore.m in Sources */,
 				F31233B61E58DC4C00231974 /* UIColor+MSEColor.m in Sources */,

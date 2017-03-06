@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MSEViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -57,9 +57,9 @@
                     <navigationItem key="navigationItem" id="Utv-eR-LNZ"/>
                     <connections>
                         <outlet property="agendaTopConstraint" destination="3Ei-E2-lLf" id="xBD-HY-ZYj"/>
-                        <outlet property="agendaViewModel" destination="p2Q-OX-EgD" id="eC0-e8-hF9"/>
+                        <outlet property="agendaView" destination="p2Q-OX-EgD" id="s85-e3-fN9"/>
                         <outlet property="calendarHeightConstraint" destination="4nD-iu-FtD" id="CWT-G2-HSN"/>
-                        <outlet property="calendarViewModel" destination="z7p-MH-4Wm" id="LZs-9e-QE2"/>
+                        <outlet property="calendarView" destination="z7p-MH-4Wm" id="tYd-zS-ce6"/>
                         <outlet property="weekdayView" destination="TMS-FQ-2rH" id="uQm-rF-nbp"/>
                     </connections>
                 </viewController>

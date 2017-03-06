@@ -74,6 +74,10 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
     });
 }
 
+//In this current implementation I find the beginning of each week and store that date in an array. That way we're only saving 1/7 of the
+//dates to save memory. The calculations are pretty easy to do so this seemed like a decent idea. If I had more time I would
+//implement a way to store only dates we need to show and pop off unused dates.
+
 - (void)initWithNumberOfPreviousWeeks:(NSInteger)previousWeeks futureWeeks:(NSInteger)futureWeeks {
     __weak typeof(self) weakSelf = self;
 
@@ -87,6 +91,8 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
         });
     });
 }
+
+#pragma mark - UITableView methods
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return [self.weeks count];
@@ -102,38 +108,6 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
     MSEDate *currentWeek = [self.weeks objectAtIndex:indexPath.section];
     MSEDate *weekDay = [[MSEDateStore mainStore] dateByAddingDays:indexPath.row to:currentWeek];
     [mseCell initWithDate:weekDay];
-}
-
-- (void)selectedDate:(MSEDate *)date {
-    [self selectedDate:date shouldScroll:YES scrollPosition:UICollectionViewScrollPositionTop];
-}
-
-- (void)selectedDate:(MSEDate *)date shouldScroll:(BOOL)isScrolling scrollPosition:(UICollectionViewScrollPosition) position {
-    if ([self.selectedDate.date isEqualToDate:date.date]) {
-        return;
-    }
-    
-    //Do some calculations since we're only storing each sunday to reduce memory footprint (instead of storing all days)
-    
-    NSDate *week = [MSECalendarUtils firstDayOfWeekFromDate:date.date];
-    NSInteger row = [MSECalendarUtils daysBetweenDate:week andDate:date.date];
-    MSEDate *beginningWeek = self.weeks[0];
-    NSInteger section = [MSECalendarUtils weeksBetweenDate:beginningWeek.date toDate:week];
-    NSIndexPath *newPath = [NSIndexPath indexPathForRow:row inSection:section];
-    NSIndexPath *oldPath = self.selectedIndexPath;
-    self.selectedIndexPath = newPath;
-    self.selectedDate = date;
-    
-    if (isScrolling){
-        [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:position animated:NO];
-    }
-    
-    if (oldPath && ![oldPath isEqual:newPath]) {
-        [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath, oldPath]];
-    }
-    else {
-        [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath]];
-    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -169,6 +143,43 @@ NSInteger const NUMBER_OF_WEEKS_TO_SHOW = 5;
     
     return cell;
 }
+
+#pragma mark Selecting Date
+
+- (void)selectedDate:(MSEDate *)date {
+    [self selectedDate:date shouldScroll:YES scrollPosition:UICollectionViewScrollPositionTop];
+}
+
+- (void)selectedDate:(MSEDate *)date shouldScroll:(BOOL)isScrolling scrollPosition:(UICollectionViewScrollPosition) position {
+    if ([self.selectedDate.date isEqualToDate:date.date]) {
+        return;
+    }
+    
+    //Do some calculations since we're only storing each sunday to reduce memory footprint (instead of storing all days)
+    
+    NSDate *week = [MSECalendarUtils firstDayOfWeekFromDate:date.date];
+    NSInteger row = [MSECalendarUtils daysBetweenDate:week andDate:date.date];
+    MSEDate *beginningWeek = self.weeks[0];
+    NSInteger section = [MSECalendarUtils weeksBetweenDate:beginningWeek.date toDate:week];
+    NSIndexPath *newPath = [NSIndexPath indexPathForRow:row inSection:section];
+    NSIndexPath *oldPath = self.selectedIndexPath;
+    self.selectedIndexPath = newPath;
+    self.selectedDate = date;
+    
+    //Do checks here to prevent UI hiccups. If both itemPaths are equal or one is nil then it doesn't look too pretty.
+    if (isScrolling){
+        [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:position animated:NO];
+    }
+    
+    if (oldPath && ![oldPath isEqual:newPath]) {
+        [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath, oldPath]];
+    }
+    else {
+        [self.collectionView reloadItemsAtIndexPaths:@[self.selectedIndexPath]];
+    }
+}
+
+
 
 #pragma mark ScrollView delegate methods
 

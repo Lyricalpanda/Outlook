@@ -14,9 +14,8 @@
 
 @optional
 
-- (void) agendaScrolled;
+- (void) agendaScrolled:(MSEDate *)date;
 - (void) agendaFinishedScrolling;
-- (void) dateScrolled:(MSEDate *)date;
 - (void) decrementedDate;
 - (void) incrementedDate;
 
