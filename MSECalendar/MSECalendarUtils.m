@@ -8,6 +8,9 @@
 
 #import "MSECalendarUtils.h"
 
+static MSECalendarUtils *mainstore;
+static NSCalendar *calendar;
+
 @interface MSECalendarUtils()
 
 @property (nonatomic, strong) NSCalendar *calendar;
@@ -17,40 +20,101 @@
 
 @implementation MSECalendarUtils
 
-- (instancetype) init {
-    self = [super init];
-    if (self) {
-        self.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
++ (void)initialize {
+    calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+}
+
++ (NSDate *)firstDayOfWeekFromDate:(NSDate *)date {
+    NSDate *firstDay;
+    NSInteger weekdayOfDate = [calendar component:NSCalendarUnitWeekday fromDate:date];
+    if (weekdayOfDate > 1) {
+        firstDay = [self addDays:-1*(weekdayOfDate-1) toDate:date];
     }
-    return self;
-}
-
-//Convenience method
-- (NSDate *)dateWithMonth:(NSInteger)month year:(NSInteger)year {
-    return [self dateWithMonth:month day:1 year:year];
-}
-
-- (NSDate *)dateWithMonth:(NSInteger)month day:(NSInteger)day year:(NSInteger)year {
-    NSDateComponents *components = [NSDateComponents new];
-    components.year = year;
-    components.day = day;
-    components.month = month;
-    return [self.calendar dateFromComponents:components];
-}
-
-- (NSInteger)numberOfDaysInMonth:(NSInteger)month year:(NSInteger)year {
-    NSDate *date = [self dateWithMonth:month year:year];
-    return [self.calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:date].length;
-}
-
-- (NSInteger)firstDayInMonth:(NSInteger)month year:(NSInteger)year {
-    NSDate *beginningOfMonthDate = [self dateWithMonth:month year:year];
-    NSInteger firstDay = [self.calendar component:NSCalendarUnitWeekday fromDate:beginningOfMonthDate];
+    else {
+        firstDay = [date copy];
+    }
     return firstDay;
+
 }
-- (NSString *)monthName:(NSInteger)month {
+
++ (NSDate *)previousWeekFromDate:(NSDate *)date{
+    return [MSECalendarUtils addDays:-7 toDate:date];
+}
+
++ (NSDate *)nextWeekFromDate:(NSDate *)date{
+    return [MSECalendarUtils addDays:7 toDate:date];
+}
+
++ (NSDate *)addDays:(NSInteger)numDays toDate:(NSDate *)date {
+    NSUInteger units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    NSDateComponents *comps = [[NSCalendar currentCalendar] components:units fromDate:date];
+    comps.day = comps.day + numDays;
+    return [[NSCalendar currentCalendar] dateFromComponents:comps];
+}
+
++ (NSString *)stringForDate:(NSDate *)date{
+    return [[NSString stringWithFormat:@"%@ %@ %ld",[MSECalendarUtils weekdayName:[calendar component:NSCalendarUnitWeekday fromDate:date]], [MSECalendarUtils monthName:[calendar component:NSCalendarUnitMonth fromDate:date]], [calendar component:NSCalendarUnitDay fromDate:date]] uppercaseString];
+}
+
++ (NSString *)monthName:(NSInteger)month {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     return [[dateFormatter standaloneMonthSymbols] objectAtIndex:(month-1)];
+}
+
++ (NSString *)weekdayName:(NSInteger)day {
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    return [[dateFormatter weekdaySymbols] objectAtIndex:(day-1)];
+}
+
++ (NSInteger)dayFromDate:(NSDate *)date {
+    return [[calendar components: NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date] day];
+}
+
++ (NSInteger)monthFromDate:(NSDate *)date {
+    return [[calendar components: NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date] month];
+}
+
++ (NSInteger)yearFromDate:(NSDate *)date {
+    return [[calendar components: NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date] year];
+}
+
++ (NSString *)monthAbbreviationFromMonth:(NSInteger)month {
+    return [[MSECalendarUtils monthName:month] substringToIndex:3];
+}
+
++ (NSInteger)weeksBetweenDate:(NSDate *)fromDate toDate:(NSDate *)toDate {
+    NSDate *fromDateA;
+    NSDate *toDateA;
+    
+    [calendar rangeOfUnit:NSCalendarUnitWeekOfYear startDate:&fromDateA
+                 interval:NULL forDate:fromDate];
+    [calendar rangeOfUnit:NSCalendarUnitWeekOfYear startDate:&toDateA
+                 interval:NULL forDate:toDate];
+    
+    NSDateComponents *difference = [calendar components:NSCalendarUnitWeekOfYear
+                                               fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference weekOfYear];
+}
+
++ (NSInteger)daysBetweenDate:(NSDate*)fromDate andDate:(NSDate*)toDate
+{
+    NSDate *fromDateA;
+    NSDate *toDateA;
+    
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDateA
+                      interval:NULL forDate:fromDate];
+    [calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDateA
+                      interval:NULL forDate:toDate];
+    
+    NSDateComponents *difference = [calendar components:NSCalendarUnitDay
+                                                    fromDate:fromDateA toDate:toDateA options:0];
+    
+    return [difference day];
+}
+
++ (NSInteger)minutesBetweenDate:(NSDate *)fromDate andDate:(NSDate *)toDate {
+    return fabs([fromDate timeIntervalSinceDate:toDate]) / 60;
 }
 
 @end

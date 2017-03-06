@@ -10,9 +10,22 @@
 
 @interface MSECalendarUtils : NSObject
 
-- (NSDate *)dateWithMonth:(NSInteger)month year:(NSInteger)year;
-- (NSDate *)dateWithMonth:(NSInteger)month day:(NSInteger)day year:(NSInteger)year;
-- (NSInteger)numberOfDaysInMonth:(NSInteger)month year:(NSInteger)year;
-- (NSInteger)firstDayInMonth:(NSInteger)month year:(NSInteger)year;
-- (NSString *)monthName:(NSInteger)month;
++ (NSDate *)firstDayOfWeekFromDate:(NSDate *)date;
++ (NSDate *)previousWeekFromDate:(NSDate *)date;
++ (NSDate *)nextWeekFromDate:(NSDate *)date;
+
++ (NSString *)stringForDate:(NSDate *)date;
+
++ (NSString *)monthAbbreviationFromMonth:(NSInteger)month;
++ (NSString *)monthName:(NSInteger)month;
+
++ (NSDate *)addDays:(NSInteger)numDays toDate:(NSDate *)date;
++ (NSInteger)dayFromDate:(NSDate *)date;
++ (NSInteger)monthFromDate:(NSDate *)date;
++ (NSInteger)yearFromDate:(NSDate *)date;
+
++ (NSInteger)daysBetweenDate:(NSDate*)fromDate andDate:(NSDate*)toDate;
++ (NSInteger)weeksBetweenDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
++ (NSInteger)minutesBetweenDate:(NSDate *)fromDate andDate:(NSDate *)toDate;
+
 @end

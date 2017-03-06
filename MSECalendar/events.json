@@ -1,0 +1,54 @@
+{
+    "events": [
+               {
+               "start_timestamp": "2017-02-20 00:00:00 +0000",
+               "end_timestamp": "2017-02-20 01:00:00 +0000",
+               "color": 1,
+               "id": 1,
+               "name":"Event 1"
+               },
+               {
+               "start_timestamp": "2017-02-22 17:00:00 +0000",
+               "end_timestamp": "2017-02-22 17:45:00 +0000",
+               "color": 2,
+               "id": 2,
+               "name":"Event 2"
+               },
+               {
+               "start_timestamp": "2017-02-22 19:00:00 +0000",
+               "end_timestamp": "2017-02-22 19:30:00 +0000",
+               "color": 3,
+               "id": 3,
+               "name":"Event 3"
+               },
+               {
+               "start_timestamp": "2017-02-21 00:00:00 +0000",
+               "end_timestamp": "2017-02-21 01:45:00 +0000",
+               "color": 1,
+               "id": 1,
+               "name":"Event 4"
+               },
+               {
+               "start_timestamp": "2017-02-23 00:00:00 +0000",
+               "end_timestamp": "2017-02-23 01:15:00 +0000",
+               "color": 2,
+               "id": 1,
+               "name":"Event 5"
+               },
+               {
+               "start_timestamp": "2017-02-24 00:00:00 +0000",
+               "end_timestamp": "2017-02-24 01:10:00 +0000",
+               "color": 3,
+               "id": 1,
+               "name":"Event 6"
+               },
+               {
+               "start_timestamp": "2017-02-25 00:00:00 +0000",
+               "end_timestamp": "2017-02-25 01:45:00 +0000",
+               "color": 1,
+               "id": 1,
+               "name":"Event 7"
+               }
+               ]
+}
+

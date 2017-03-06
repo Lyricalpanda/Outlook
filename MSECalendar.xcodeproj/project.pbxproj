@@ -7,9 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F31233A81E5801AC00231974 /* MSECalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31233A71E5801AC00231974 /* MSECalendarWeekdayView.m */; };
+		F31233AA1E5801C000231974 /* MSECalendarWeekdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31233A91E5801C000231974 /* MSECalendarWeekdayView.xib */; };
+		F31233AE1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F31233AC1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.m */; };
+		F31233AF1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31233AD1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.xib */; };
+		F31233B61E58DC4C00231974 /* UIColor+MSEColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F31233B51E58DC4C00231974 /* UIColor+MSEColor.m */; };
+		F31233BA1E5AC5F400231974 /* MSEEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F31233B91E5AC5F400231974 /* MSEEventStore.m */; };
+		F31233BC1E5AC82C00231974 /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = F31233BB1E5AC82C00231974 /* events.json */; };
+		F318C5981E47E58000300755 /* MSEDate.m in Sources */ = {isa = PBXBuildFile; fileRef = F318C5971E47E58000300755 /* MSEDate.m */; };
+		F31BEF2C1E5AF94600B64C43 /* UITableView+MSETableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF2B1E5AF94600B64C43 /* UITableView+MSETableView.m */; };
+		F31BEF301E5B01A700B64C43 /* MSENetworkingClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF2F1E5B01A700B64C43 /* MSENetworkingClient.m */; };
+		F31BEF331E5B037300B64C43 /* MSEWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF321E5B037300B64C43 /* MSEWeather.m */; };
+		F31BEF361E5B03FA00B64C43 /* MSEWeatherStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF351E5B03FA00B64C43 /* MSEWeatherStore.m */; };
+		F31BEF391E5B1C8B00B64C43 /* UICollectionView+MSECalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF381E5B1C8B00B64C43 /* UICollectionView+MSECalendar.m */; };
+		F31BEF3C1E5BAC6000B64C43 /* MSEDateStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF3B1E5BAC6000B64C43 /* MSEDateStore.m */; };
+		F31BEF3E1E5BFA0B00B64C43 /* MSEDateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF3D1E5BFA0B00B64C43 /* MSEDateTest.m */; };
+		F31BEF401E5BFA1700B64C43 /* MSEEventTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF3F1E5BFA1700B64C43 /* MSEEventTest.m */; };
+		F31BEF421E5BFA2300B64C43 /* MSEWeatherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF411E5BFA2300B64C43 /* MSEWeatherTest.m */; };
+		F31BEF441E5BFA3400B64C43 /* MSECalendarUtilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF431E5BFA3400B64C43 /* MSECalendarUtilTest.m */; };
+		F31BEF461E5BFA4A00B64C43 /* MSEDateStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF451E5BFA4A00B64C43 /* MSEDateStoreTest.m */; };
+		F31BEF4A1E5BFA6000B64C43 /* MSEEventStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F31BEF491E5BFA6000B64C43 /* MSEEventStoreTest.m */; };
+		F31D4CBD1E499EF100065C34 /* MSECalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D4CBC1E499EF100065C34 /* MSECalendarView.m */; };
+		F31D4CC01E49A07300065C34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31D4CBF1E49A07300065C34 /* UIKit.framework */; };
+		F31D4CC41E49BE7900065C34 /* MSEAgendaView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D4CC31E49BE7900065C34 /* MSEAgendaView.m */; };
+		F31D4D091E4AE9B200065C34 /* MSEAgendaHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D4D081E4AE9B200065C34 /* MSEAgendaHeaderFooterView.m */; };
+		F31D4D0B1E4AE9C300065C34 /* MSEAgendaHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31D4D0A1E4AE9C300065C34 /* MSEAgendaHeaderFooterView.xib */; };
+		F31D4D141E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D4D121E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.m */; };
+		F31D4D151E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31D4D131E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.xib */; };
+		F31D4D191E4AEA8300065C34 /* MSEAgendaEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D4D171E4AEA8300065C34 /* MSEAgendaEventTableViewCell.m */; };
+		F31D4D1A1E4AEA8300065C34 /* MSEAgendaEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31D4D181E4AEA8300065C34 /* MSEAgendaEventTableViewCell.xib */; };
+		F3216B811E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3216B7F1E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.m */; };
+		F3216B821E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3216B801E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.xib */; };
+		F3216B851E4D383E00677A6C /* MSEEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = F3216B841E4D383E00677A6C /* MSEEvent.m */; };
 		F32C25531E42B6F5006F8C77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25521E42B6F5006F8C77 /* main.m */; };
 		F32C25561E42B6F5006F8C77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25551E42B6F5006F8C77 /* AppDelegate.m */; };
-		F32C25591E42B6F5006F8C77 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25581E42B6F5006F8C77 /* ViewController.m */; };
+		F32C25591E42B6F5006F8C77 /* MSEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25581E42B6F5006F8C77 /* MSEViewController.m */; };
 		F32C255C1E42B6F5006F8C77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32C255A1E42B6F5006F8C77 /* Main.storyboard */; };
 		F32C255E1E42B6F5006F8C77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32C255D1E42B6F5006F8C77 /* Assets.xcassets */; };
 		F32C25611E42B6F5006F8C77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32C255F1E42B6F5006F8C77 /* LaunchScreen.storyboard */; };
@@ -18,11 +50,6 @@
 		F32C25871E42B719006F8C77 /* MSECalendarUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25861E42B719006F8C77 /* MSECalendarUtils.m */; };
 		F32C258C1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C258A1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m */; };
 		F32C258D1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F32C258B1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib */; };
-		F32C25911E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */; };
-		F32C25941E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25931E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m */; };
-		F32C25971E43088C006F8C77 /* RDHCollectionViewGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25961E43088C006F8C77 /* RDHCollectionViewGridLayout.m */; };
-		F32C259A1E430A3B006F8C77 /* FullyHorizontalFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C25991E430A3B006F8C77 /* FullyHorizontalFlowLayout.m */; };
-		F32C259E1E430E23006F8C77 /* MSEMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = F32C259D1E430E23006F8C77 /* MSEMonth.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,12 +70,62 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F31233A61E5801AC00231974 /* MSECalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarWeekdayView.h; sourceTree = "<group>"; };
+		F31233A71E5801AC00231974 /* MSECalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarWeekdayView.m; sourceTree = "<group>"; };
+		F31233A91E5801C000231974 /* MSECalendarWeekdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSECalendarWeekdayView.xib; sourceTree = "<group>"; };
+		F31233AB1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarBaseCollectionViewCell.h; sourceTree = "<group>"; };
+		F31233AC1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarBaseCollectionViewCell.m; sourceTree = "<group>"; };
+		F31233AD1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSECalendarBaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		F31233B41E58DC4C00231974 /* UIColor+MSEColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MSEColor.h"; sourceTree = "<group>"; };
+		F31233B51E58DC4C00231974 /* UIColor+MSEColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MSEColor.m"; sourceTree = "<group>"; };
+		F31233B81E5AC5F400231974 /* MSEEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEEventStore.h; sourceTree = "<group>"; };
+		F31233B91E5AC5F400231974 /* MSEEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEEventStore.m; sourceTree = "<group>"; };
+		F31233BB1E5AC82C00231974 /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
+		F318C5961E47E58000300755 /* MSEDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEDate.h; sourceTree = "<group>"; };
+		F318C5971E47E58000300755 /* MSEDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEDate.m; sourceTree = "<group>"; };
+		F31BEF2A1E5AF94600B64C43 /* UITableView+MSETableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+MSETableView.h"; sourceTree = "<group>"; };
+		F31BEF2B1E5AF94600B64C43 /* UITableView+MSETableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+MSETableView.m"; sourceTree = "<group>"; };
+		F31BEF2E1E5B01A700B64C43 /* MSENetworkingClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSENetworkingClient.h; sourceTree = "<group>"; };
+		F31BEF2F1E5B01A700B64C43 /* MSENetworkingClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSENetworkingClient.m; sourceTree = "<group>"; };
+		F31BEF311E5B037300B64C43 /* MSEWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEWeather.h; sourceTree = "<group>"; };
+		F31BEF321E5B037300B64C43 /* MSEWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEWeather.m; sourceTree = "<group>"; };
+		F31BEF341E5B03FA00B64C43 /* MSEWeatherStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEWeatherStore.h; sourceTree = "<group>"; };
+		F31BEF351E5B03FA00B64C43 /* MSEWeatherStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEWeatherStore.m; sourceTree = "<group>"; };
+		F31BEF371E5B1C8B00B64C43 /* UICollectionView+MSECalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+MSECalendar.h"; sourceTree = "<group>"; };
+		F31BEF381E5B1C8B00B64C43 /* UICollectionView+MSECalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+MSECalendar.m"; sourceTree = "<group>"; };
+		F31BEF3A1E5BAC6000B64C43 /* MSEDateStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEDateStore.h; sourceTree = "<group>"; };
+		F31BEF3B1E5BAC6000B64C43 /* MSEDateStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEDateStore.m; sourceTree = "<group>"; };
+		F31BEF3D1E5BFA0B00B64C43 /* MSEDateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEDateTest.m; sourceTree = "<group>"; };
+		F31BEF3F1E5BFA1700B64C43 /* MSEEventTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEEventTest.m; sourceTree = "<group>"; };
+		F31BEF411E5BFA2300B64C43 /* MSEWeatherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEWeatherTest.m; sourceTree = "<group>"; };
+		F31BEF431E5BFA3400B64C43 /* MSECalendarUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarUtilTest.m; sourceTree = "<group>"; };
+		F31BEF451E5BFA4A00B64C43 /* MSEDateStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEDateStoreTest.m; sourceTree = "<group>"; };
+		F31BEF491E5BFA6000B64C43 /* MSEEventStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEEventStoreTest.m; sourceTree = "<group>"; };
+		F31D4CBB1E499EF100065C34 /* MSECalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarView.h; sourceTree = "<group>"; };
+		F31D4CBC1E499EF100065C34 /* MSECalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarView.m; sourceTree = "<group>"; };
+		F31D4CBF1E49A07300065C34 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F31D4CC21E49BE7900065C34 /* MSEAgendaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEAgendaView.h; sourceTree = "<group>"; };
+		F31D4CC31E49BE7900065C34 /* MSEAgendaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEAgendaView.m; sourceTree = "<group>"; };
+		F31D4D071E4AE9B200065C34 /* MSEAgendaHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEAgendaHeaderFooterView.h; sourceTree = "<group>"; };
+		F31D4D081E4AE9B200065C34 /* MSEAgendaHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEAgendaHeaderFooterView.m; sourceTree = "<group>"; };
+		F31D4D0A1E4AE9C300065C34 /* MSEAgendaHeaderFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSEAgendaHeaderFooterView.xib; sourceTree = "<group>"; };
+		F31D4D111E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEAgendaEmptyTableViewCell.h; sourceTree = "<group>"; };
+		F31D4D121E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEAgendaEmptyTableViewCell.m; sourceTree = "<group>"; };
+		F31D4D131E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSEAgendaEmptyTableViewCell.xib; sourceTree = "<group>"; };
+		F31D4D161E4AEA8300065C34 /* MSEAgendaEventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEAgendaEventTableViewCell.h; sourceTree = "<group>"; };
+		F31D4D171E4AEA8300065C34 /* MSEAgendaEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEAgendaEventTableViewCell.m; sourceTree = "<group>"; };
+		F31D4D181E4AEA8300065C34 /* MSEAgendaEventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSEAgendaEventTableViewCell.xib; sourceTree = "<group>"; };
+		F3216B7E1E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarSelectedCollectionViewCell.h; sourceTree = "<group>"; };
+		F3216B7F1E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarSelectedCollectionViewCell.m; sourceTree = "<group>"; };
+		F3216B801E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSECalendarSelectedCollectionViewCell.xib; sourceTree = "<group>"; };
+		F3216B831E4D383E00677A6C /* MSEEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEEvent.h; sourceTree = "<group>"; };
+		F3216B841E4D383E00677A6C /* MSEEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEEvent.m; sourceTree = "<group>"; };
 		F32C254E1E42B6F5006F8C77 /* MSECalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSECalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F32C25521E42B6F5006F8C77 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F32C25541E42B6F5006F8C77 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F32C25551E42B6F5006F8C77 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F32C25571E42B6F5006F8C77 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F32C25581E42B6F5006F8C77 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F32C25571E42B6F5006F8C77 /* MSEViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSEViewController.h; sourceTree = "<group>"; };
+		F32C25581E42B6F5006F8C77 /* MSEViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSEViewController.m; sourceTree = "<group>"; };
 		F32C255B1E42B6F5006F8C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F32C255D1E42B6F5006F8C77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F32C25601E42B6F5006F8C77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,16 +141,6 @@
 		F32C25891E42BED2006F8C77 /* MSECalendarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECalendarCollectionViewCell.h; sourceTree = "<group>"; };
 		F32C258A1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECalendarCollectionViewCell.m; sourceTree = "<group>"; };
 		F32C258B1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MSECalendarCollectionViewCell.xib; sourceTree = "<group>"; };
-		F32C258F1E42C5B3006F8C77 /* MSECollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSECollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSECollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		F32C25921E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTCollectionViewPageHorizontalLayout.h; sourceTree = "<group>"; };
-		F32C25931E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTCollectionViewPageHorizontalLayout.m; sourceTree = "<group>"; };
-		F32C25951E43088C006F8C77 /* RDHCollectionViewGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDHCollectionViewGridLayout.h; sourceTree = "<group>"; };
-		F32C25961E43088C006F8C77 /* RDHCollectionViewGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHCollectionViewGridLayout.m; sourceTree = "<group>"; };
-		F32C25981E430A3B006F8C77 /* FullyHorizontalFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullyHorizontalFlowLayout.h; sourceTree = "<group>"; };
-		F32C25991E430A3B006F8C77 /* FullyHorizontalFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullyHorizontalFlowLayout.m; sourceTree = "<group>"; };
-		F32C259C1E430E23006F8C77 /* MSEMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSEMonth.h; sourceTree = "<group>"; };
-		F32C259D1E430E23006F8C77 /* MSEMonth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSEMonth.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31D4CC01E49A07300065C34 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +169,87 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F31233A21E57FA0700231974 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F31233BB1E5AC82C00231974 /* events.json */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F31233A51E57FF5300231974 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F31D4CBB1E499EF100065C34 /* MSECalendarView.h */,
+				F31D4CBC1E499EF100065C34 /* MSECalendarView.m */,
+				F31D4CC21E49BE7900065C34 /* MSEAgendaView.h */,
+				F31D4CC31E49BE7900065C34 /* MSEAgendaView.m */,
+				F31233A61E5801AC00231974 /* MSECalendarWeekdayView.h */,
+				F31233A71E5801AC00231974 /* MSECalendarWeekdayView.m */,
+				F31233A91E5801C000231974 /* MSECalendarWeekdayView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F31233B01E58DC1F00231974 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F31233B41E58DC4C00231974 /* UIColor+MSEColor.h */,
+				F31233B51E58DC4C00231974 /* UIColor+MSEColor.m */,
+				F31BEF2A1E5AF94600B64C43 /* UITableView+MSETableView.h */,
+				F31BEF2B1E5AF94600B64C43 /* UITableView+MSETableView.m */,
+				F31BEF371E5B1C8B00B64C43 /* UICollectionView+MSECalendar.h */,
+				F31BEF381E5B1C8B00B64C43 /* UICollectionView+MSECalendar.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		F31233B71E5AC5D800231974 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				F31233B81E5AC5F400231974 /* MSEEventStore.h */,
+				F31233B91E5AC5F400231974 /* MSEEventStore.m */,
+				F31BEF341E5B03FA00B64C43 /* MSEWeatherStore.h */,
+				F31BEF351E5B03FA00B64C43 /* MSEWeatherStore.m */,
+				F31BEF3A1E5BAC6000B64C43 /* MSEDateStore.h */,
+				F31BEF3B1E5BAC6000B64C43 /* MSEDateStore.m */,
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+		F31BEF2D1E5B019300B64C43 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F31BEF2E1E5B01A700B64C43 /* MSENetworkingClient.h */,
+				F31BEF2F1E5B01A700B64C43 /* MSENetworkingClient.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		F31D4CBA1E499EE500065C34 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F31D4D071E4AE9B200065C34 /* MSEAgendaHeaderFooterView.h */,
+				F31D4D081E4AE9B200065C34 /* MSEAgendaHeaderFooterView.m */,
+				F31D4D0A1E4AE9C300065C34 /* MSEAgendaHeaderFooterView.xib */,
+				F31D4D111E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.h */,
+				F31D4D121E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.m */,
+				F31D4D131E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.xib */,
+				F31D4D161E4AEA8300065C34 /* MSEAgendaEventTableViewCell.h */,
+				F31D4D171E4AEA8300065C34 /* MSEAgendaEventTableViewCell.m */,
+				F31D4D181E4AEA8300065C34 /* MSEAgendaEventTableViewCell.xib */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		F31D4CBE1E49A07200065C34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F31D4CBF1E49A07300065C34 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F32C25451E42B6F5006F8C77 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +257,7 @@
 				F32C256A1E42B6F6006F8C77 /* MSECalendarTests */,
 				F32C25751E42B6F6006F8C77 /* MSECalendarUITests */,
 				F32C254F1E42B6F5006F8C77 /* Products */,
+				F31D4CBE1E49A07200065C34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,19 +274,19 @@
 		F32C25501E42B6F5006F8C77 /* MSECalendar */ = {
 			isa = PBXGroup;
 			children = (
+				F31BEF2D1E5B019300B64C43 /* Networking */,
+				F31233B71E5AC5D800231974 /* Stores */,
+				F31233B01E58DC1F00231974 /* Categories */,
+				F31233A51E57FF5300231974 /* Views */,
+				F31233A21E57FA0700231974 /* Resources */,
+				F31D4CBA1E499EE500065C34 /* ViewModels */,
 				F32C259B1E430E15006F8C77 /* Models */,
-				F32C25981E430A3B006F8C77 /* FullyHorizontalFlowLayout.h */,
-				F32C25991E430A3B006F8C77 /* FullyHorizontalFlowLayout.m */,
-				F32C25921E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.h */,
-				F32C25931E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m */,
-				F32C25951E43088C006F8C77 /* RDHCollectionViewGridLayout.h */,
-				F32C25961E43088C006F8C77 /* RDHCollectionViewGridLayout.m */,
 				F32C25881E42BEB0006F8C77 /* Cells */,
 				F32C25841E42B705006F8C77 /* Utils */,
 				F32C25541E42B6F5006F8C77 /* AppDelegate.h */,
 				F32C25551E42B6F5006F8C77 /* AppDelegate.m */,
-				F32C25571E42B6F5006F8C77 /* ViewController.h */,
-				F32C25581E42B6F5006F8C77 /* ViewController.m */,
+				F32C25571E42B6F5006F8C77 /* MSEViewController.h */,
+				F32C25581E42B6F5006F8C77 /* MSEViewController.m */,
 				F32C255A1E42B6F5006F8C77 /* Main.storyboard */,
 				F32C255D1E42B6F5006F8C77 /* Assets.xcassets */,
 				F32C255F1E42B6F5006F8C77 /* LaunchScreen.storyboard */,
@@ -159,6 +309,12 @@
 			children = (
 				F32C256B1E42B6F6006F8C77 /* MSECalendarTests.m */,
 				F32C256D1E42B6F6006F8C77 /* Info.plist */,
+				F31BEF3D1E5BFA0B00B64C43 /* MSEDateTest.m */,
+				F31BEF3F1E5BFA1700B64C43 /* MSEEventTest.m */,
+				F31BEF411E5BFA2300B64C43 /* MSEWeatherTest.m */,
+				F31BEF431E5BFA3400B64C43 /* MSECalendarUtilTest.m */,
+				F31BEF451E5BFA4A00B64C43 /* MSEDateStoreTest.m */,
+				F31BEF491E5BFA6000B64C43 /* MSEEventStoreTest.m */,
 			);
 			path = MSECalendarTests;
 			sourceTree = "<group>";
@@ -177,8 +333,6 @@
 			children = (
 				F32C25851E42B719006F8C77 /* MSECalendarUtils.h */,
 				F32C25861E42B719006F8C77 /* MSECalendarUtils.m */,
-				F32C258F1E42C5B3006F8C77 /* MSECollectionViewFlowLayout.h */,
-				F32C25901E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -189,6 +343,12 @@
 				F32C25891E42BED2006F8C77 /* MSECalendarCollectionViewCell.h */,
 				F32C258A1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m */,
 				F32C258B1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib */,
+				F3216B7E1E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.h */,
+				F3216B7F1E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.m */,
+				F3216B801E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.xib */,
+				F31233AB1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.h */,
+				F31233AC1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.m */,
+				F31233AD1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -196,8 +356,12 @@
 		F32C259B1E430E15006F8C77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F32C259C1E430E23006F8C77 /* MSEMonth.h */,
-				F32C259D1E430E23006F8C77 /* MSEMonth.m */,
+				F318C5961E47E58000300755 /* MSEDate.h */,
+				F318C5971E47E58000300755 /* MSEDate.m */,
+				F3216B831E4D383E00677A6C /* MSEEvent.h */,
+				F3216B841E4D383E00677A6C /* MSEEvent.m */,
+				F31BEF311E5B037300B64C43 /* MSEWeather.h */,
+				F31BEF321E5B037300B64C43 /* MSEWeather.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -308,10 +472,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31D4D0B1E4AE9C300065C34 /* MSEAgendaHeaderFooterView.xib in Resources */,
+				F3216B821E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.xib in Resources */,
+				F31233AA1E5801C000231974 /* MSECalendarWeekdayView.xib in Resources */,
+				F31D4D151E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.xib in Resources */,
 				F32C258D1E42BED2006F8C77 /* MSECalendarCollectionViewCell.xib in Resources */,
+				F31233AF1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.xib in Resources */,
 				F32C25611E42B6F5006F8C77 /* LaunchScreen.storyboard in Resources */,
 				F32C255E1E42B6F5006F8C77 /* Assets.xcassets in Resources */,
 				F32C255C1E42B6F5006F8C77 /* Main.storyboard in Resources */,
+				F31233BC1E5AC82C00231974 /* events.json in Resources */,
+				F31D4D1A1E4AEA8300065C34 /* MSEAgendaEventTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,16 +507,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F32C25591E42B6F5006F8C77 /* ViewController.m in Sources */,
-				F32C25971E43088C006F8C77 /* RDHCollectionViewGridLayout.m in Sources */,
+				F31D4D091E4AE9B200065C34 /* MSEAgendaHeaderFooterView.m in Sources */,
+				F3216B811E4C1B9000677A6C /* MSECalendarSelectedCollectionViewCell.m in Sources */,
+				F31D4CBD1E499EF100065C34 /* MSECalendarView.m in Sources */,
+				F31D4D191E4AEA8300065C34 /* MSEAgendaEventTableViewCell.m in Sources */,
+				F31D4D141E4AEA7600065C34 /* MSEAgendaEmptyTableViewCell.m in Sources */,
+				F32C25591E42B6F5006F8C77 /* MSEViewController.m in Sources */,
+				F31BEF361E5B03FA00B64C43 /* MSEWeatherStore.m in Sources */,
+				F31233BA1E5AC5F400231974 /* MSEEventStore.m in Sources */,
+				F31233B61E58DC4C00231974 /* UIColor+MSEColor.m in Sources */,
+				F31233A81E5801AC00231974 /* MSECalendarWeekdayView.m in Sources */,
+				F31BEF331E5B037300B64C43 /* MSEWeather.m in Sources */,
 				F32C25871E42B719006F8C77 /* MSECalendarUtils.m in Sources */,
+				F31BEF3C1E5BAC6000B64C43 /* MSEDateStore.m in Sources */,
+				F318C5981E47E58000300755 /* MSEDate.m in Sources */,
 				F32C25561E42B6F5006F8C77 /* AppDelegate.m in Sources */,
+				F31D4CC41E49BE7900065C34 /* MSEAgendaView.m in Sources */,
+				F31BEF391E5B1C8B00B64C43 /* UICollectionView+MSECalendar.m in Sources */,
 				F32C258C1E42BED2006F8C77 /* MSECalendarCollectionViewCell.m in Sources */,
-				F32C259A1E430A3B006F8C77 /* FullyHorizontalFlowLayout.m in Sources */,
-				F32C259E1E430E23006F8C77 /* MSEMonth.m in Sources */,
-				F32C25941E42CB1C006F8C77 /* KSTCollectionViewPageHorizontalLayout.m in Sources */,
-				F32C25911E42C5B3006F8C77 /* MSECollectionViewFlowLayout.m in Sources */,
+				F3216B851E4D383E00677A6C /* MSEEvent.m in Sources */,
+				F31BEF2C1E5AF94600B64C43 /* UITableView+MSETableView.m in Sources */,
+				F31233AE1E58DA3200231974 /* MSECalendarBaseCollectionViewCell.m in Sources */,
 				F32C25531E42B6F5006F8C77 /* main.m in Sources */,
+				F31BEF301E5B01A700B64C43 /* MSENetworkingClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +537,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31BEF421E5BFA2300B64C43 /* MSEWeatherTest.m in Sources */,
+				F31BEF461E5BFA4A00B64C43 /* MSEDateStoreTest.m in Sources */,
+				F31BEF4A1E5BFA6000B64C43 /* MSEEventStoreTest.m in Sources */,
 				F32C256C1E42B6F6006F8C77 /* MSECalendarTests.m in Sources */,
+				F31BEF3E1E5BFA0B00B64C43 /* MSEDateTest.m in Sources */,
+				F31BEF441E5BFA3400B64C43 /* MSECalendarUtilTest.m in Sources */,
+				F31BEF401E5BFA1700B64C43 /* MSEEventTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +767,7 @@
 				F32C257D1E42B6F6006F8C77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F32C257E1E42B6F6006F8C77 /* Build configuration list for PBXNativeTarget "MSECalendarTests" */ = {
 			isa = XCConfigurationList;
@@ -585,6 +776,7 @@
 				F32C25801E42B6F6006F8C77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F32C25811E42B6F6006F8C77 /* Build configuration list for PBXNativeTarget "MSECalendarUITests" */ = {
 			isa = XCConfigurationList;
@@ -593,6 +785,7 @@
 				F32C25831E42B6F6006F8C77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSECalendarBaseCollectionViewCell.h"
+//@class MSEDate;
 
-@interface MSECalendarCollectionViewCell : UICollectionViewCell
-
-@property (nonatomic, weak) IBOutlet UILabel *dateNumberLabel;
+@interface MSECalendarCollectionViewCell : MSECalendarBaseCollectionViewCell
 
 @end
